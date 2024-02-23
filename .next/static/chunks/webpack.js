@@ -192,7 +192,11 @@
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
+<<<<<<< HEAD
 /******/ 		__webpack_require__.h = function() { return "b365a26e66be5624"; }
+=======
+/******/ 		__webpack_require__.h = function() { return "326ed73cf652adc8"; }
+>>>>>>> Bryan
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
