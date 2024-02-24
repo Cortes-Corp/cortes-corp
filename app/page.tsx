@@ -23,7 +23,7 @@ export default function Home() {
         <ListingCarousel />
       </div>
       <div className='pl-5 mb-10'>
-        <ListingCard1 house={house1} />
+        {/* <ListingCard1 house={house1} /> */}
       </div>
       
     </div>
