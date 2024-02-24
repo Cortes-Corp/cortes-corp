@@ -16,6 +16,9 @@ const config: Config = {
       },
       colors: {
         "custom-red": "#912F34"
+      },
+      screens: {
+        "se": "400px"
       }
     },
   },

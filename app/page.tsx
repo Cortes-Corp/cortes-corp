@@ -2,6 +2,8 @@ import Image from "next/image";
 import ListingSearchBar from "./components/ListingSearchBar";
 import Navbar from "./components/Navbar";
 import ListingCarousel from "./components/ListingCarousel";
+import HomeCards from "./components/HomeCards";
+import UnderCarousel from "./components/UnderCarousel";
 import ListingCard1, { houseCardObj } from "./components/ui/ListingCard1";
 
 const house1 : houseCardObj = {
@@ -14,18 +16,21 @@ const house1 : houseCardObj = {
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <Navbar></Navbar>
+
       <div className="relative mb-5">
         <div className="absolute w-full py-3 z-10  bg-black bg-opacity-50">
           <ListingSearchBar />
         </div>
         <ListingCarousel />
+      </div>{" "}
+      <div className=" ">
+        <UnderCarousel></UnderCarousel>
       </div>
       <div className='pl-5 mb-10'>
         <ListingCard1 house={house1} />
       </div>
-      
-    </div>
-  );
-}
+      </div>
+
+)}

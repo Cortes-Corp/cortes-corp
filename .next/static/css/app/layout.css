@@ -823,6 +823,11 @@ input:checked + .toggle-bg{
 .container{
   width: 100%;
 }
+@media (min-width: 400px){
+  .container{
+    max-width: 400px;
+  }
+}
 @media (min-width: 640px){
   .container{
     max-width: 640px;
@@ -1095,6 +1100,9 @@ input:checked + .toggle-bg{
 .mt-6{
   margin-top: 1.5rem;
 }
+.mt-\[-2\.5rem\]{
+  margin-top: -2.5rem;
+}
 .block{
   display: block;
 }
@@ -1175,6 +1183,9 @@ input:checked + .toggle-bg{
 }
 .h-96{
   height: 24rem;
+}
+.h-\[7rem\]{
+  height: 7rem;
 }
 .h-auto{
   height: auto;
@@ -1257,6 +1268,9 @@ input:checked + .toggle-bg{
 }
 .w-\[15rem\]{
   width: 15rem;
+}
+.w-\[7rem\]{
+  width: 7rem;
 }
 .w-auto{
   width: auto;
@@ -1459,6 +1473,9 @@ input:checked + .toggle-bg{
 .gap-4{
   gap: 1rem;
 }
+.gap-5{
+  gap: 1.25rem;
+}
 .-space-x-4 > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 0;
   margin-right: calc(-1rem * var(--tw-space-x-reverse));
@@ -1615,6 +1632,9 @@ input:checked + .toggle-bg{
 }
 .border-2{
   border-width: 2px;
+}
+.border-\[10px\]{
+  border-width: 10px;
 }
 .border-b{
   border-bottom-width: 1px;
@@ -1958,6 +1978,10 @@ input:checked + .toggle-bg{
 .bg-red-700{
   --tw-bg-opacity: 1;
   background-color: rgb(200 30 30 / var(--tw-bg-opacity));
+}
+.bg-slate-50{
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
 }
 .bg-teal-100{
   --tw-bg-opacity: 1;
@@ -2387,6 +2411,10 @@ input:checked + .toggle-bg{
 }
 .leading-tight{
   line-height: 1.25;
+}
+.text-black{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .text-blue-700{
   --tw-text-opacity: 1;
@@ -4889,6 +4917,15 @@ body {
   color: rgb(63 131 248 / var(--tw-text-opacity));
 }
 
+@media (min-width: 400px){
+  .se\:h-\[8rem\]{
+    height: 8rem;
+  }
+  .se\:w-\[8rem\]{
+    width: 8rem;
+  }
+}
+
 @media (min-width: 640px){
   .sm\:mx-auto{
     margin-left: auto;
@@ -4914,6 +4951,9 @@ body {
   }
   .sm\:w-6{
     width: 1.5rem;
+  }
+  .sm\:gap-20{
+    gap: 5rem;
   }
   .sm\:px-4{
     padding-left: 1rem;
@@ -4954,6 +4994,9 @@ body {
   .md\:hidden{
     display: none;
   }
+  .md\:h-\[10rem\]{
+    height: 10rem;
+  }
   .md\:h-\[40rem\]{
     height: 40rem;
   }
@@ -4965,6 +5008,9 @@ body {
   }
   .md\:w-48{
     width: 12rem;
+  }
+  .md\:w-\[10rem\]{
+    width: 10rem;
   }
   .md\:w-auto{
     width: auto;
@@ -5049,6 +5095,15 @@ body {
   .lg\:my-8{
     margin-top: 2rem;
     margin-bottom: 2rem;
+  }
+  .lg\:h-\[12rem\]{
+    height: 12rem;
+  }
+  .lg\:w-\[12rem\]{
+    width: 12rem;
+  }
+  .lg\:gap-32{
+    gap: 8rem;
   }
 }
 
