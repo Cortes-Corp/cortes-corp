@@ -32,14 +32,14 @@ export default function Agents() {
           {agents.map((agent, index) => (
             <li key={index} className="w-[96vw] sm:w-[34rem] bg-slate-50 p-5 rounded-xl flex justify-around items-center gap-20">
               <div className="flex flex-col items-center">
-                <div className="flex justify-center items-center rounded-full overflow-hidden w-20 h-20"> {/* Adjust size as needed */}
+                <div className="flex justify-center items-center rounded-full overflow-hidden w-20 h-20"> 
                   <Image
                     src={agent.src}
                     alt={agent.name}
                     width={agent.width}
                     height={agent.height}
-                    objectFit="cover" // This ensures the image covers the area of the div and is cropped to fit
-                    className="rounded-full" // To ensure the image itself is also rounded if necessary
+                    objectFit="cover" 
+                    className="rounded-full" 
                   />
                 </div>
                 <p className="font-bold text-center">{agent.name}</p>
