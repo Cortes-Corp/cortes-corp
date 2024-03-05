@@ -27,12 +27,8 @@ export default function Home() {
         </div>
         <ListingCarousel />
       </div>
-<<<<<<< HEAD
-      <div className='pl-5 mb-10'>
-=======
       <UnderCarousel />
       <div className="pl-5 mb-10">
->>>>>>> ca16cba9e474d23a7da79eb06409cc9a5b1c72b9
         {/* <ListingCard1 house={house1} /> */}
       </div>
     </div>
