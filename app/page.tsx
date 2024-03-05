@@ -17,7 +17,10 @@ const house1: houseCardObj = {
 export default function Home() {
   return (
     <div className="  w-full ">
+      
       <Navbar />
+
+        
       <div className="relative  items-center">
         <div className="absolute top-0 left-0 right-0 z-10 p-2 bg-black bg-opacity-75">
           <ListingSearchBar />
@@ -26,7 +29,7 @@ export default function Home() {
       </div>
       <UnderCarousel />
       <div className="pl-5 mb-10">
-        <ListingCard1 house={house1} />
+        {/* <ListingCard1 house={house1} /> */}
       </div>
     </div>
   );

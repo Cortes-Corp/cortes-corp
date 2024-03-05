@@ -12,8 +12,8 @@ export default function Navbar() {
   ];
   const path = usePathname()
   return (
-    <div>
-      <nav className="bg-white border-gray-200  p-2 md:p-0">
+    <div className="sticky z-[100]  top-0">
+      <nav className="bg-white   border-gray-200  p-2 md:p-0">
         <div className="flex flex-wrap items-center justify-between mx-5 ">
           <Image
             src="/cortes-corp-logo2.png"
@@ -45,7 +45,7 @@ export default function Navbar() {
           </button>
        
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium items-center flex flex-col p-3 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="font-medium items-center flex flex-col p-3 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href}>
