@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import Image from "next/image";
 import AgentPopup from "./AgentPopup";
 export default function Agents() {
-  const agents = [
+   const agents = [
     {
       name: "Cathia Lhanat",
       cell: "(347)-993-2555",
