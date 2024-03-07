@@ -1,7 +1,10 @@
+'use client'
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import AgentPopup from "./AgentPopup";
+import { useState } from "react";
 export default function Agents() {
+
    const agents = [
     {
       name: "Cathia Lhanat",
@@ -22,7 +25,7 @@ export default function Agents() {
       height: 80, // Adjust as needed
     },
   ];
-
+  
   return (
     <div>
       <Navbar />
@@ -33,41 +36,44 @@ export default function Agents() {
           <AgentPopup></AgentPopup>
         </div>
         <ul className="mt-16 flex flex-col gap-10">
-          {agents.map((agent, index) => (
-            <li
-              key={index}
-              className="w-[96vw] sm:w-[34rem] bg-slate-50 p-5 rounded-xl flex justify-around items-center gap-20">
-              <div className="flex flex-col items-center">
-                <div className="flex justify-center items-center rounded-full overflow-hidden w-20 h-20">
-                  <Image
-                    src={agent.src}
-                    alt={agent.name}
-                    width={agent.width}
-                    height={agent.height}
-                    objectFit="cover"
-                    className="rounded-full"
-                  />
+          {agents.map((agent, index) => {
+            const [expand, setExpand] = useState(false)
+              return (
+                <li
+                key={index}
+                className={`w-[96vw] sm:w-[34rem] bg-slate-50 p-5 ${!expand && 'h-[10rem]'}  ${expand && ' h-[20rem]   z-[500] relative inset-0 m-auto shadow-xl scale-[1.7]' }    justify-between   transition-all duration-500 rounded-xl shadow flex  gap-20`}>
+                <div className="flex flex-col items-center">
+                  <div className="flex shadow-md justify-center items-center rounded-full overflow-hidden w-20 h-20">
+                    <Image
+                      src={agent.src}
+                      alt={agent.name}
+                      width={agent.width}
+                      height={agent.height}
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </div>
+                  <p className="font-bold text-center">{agent.name}</p>
                 </div>
-                <p className="font-bold text-center">{agent.name}</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <p>
-                  <span className="font-bold">Cell:</span> {agent.cell}
-                </p>
-                <p>
-                  <span className="font-bold">Office:</span> {agent.office}
-                </p>
-                {agent.email && (
-                  <p>
-                    <span className="font-bold">Email:</span> {agent.email}
+                <div className={`flex flex-col items-center`}>
+                  <p >
+                    <span className='font-bold'>Cell:</span> {agent.cell}
                   </p>
-                )}
-                <button className="bg-red-600 mt-2 text-white p-1 px-2 rounded-md hover:bg-red-700 transition duration-300">
-                  More Info
-                </button>
-              </div>
-            </li>
-          ))}
+                  <p>
+                    <span className="font-bold">Office:</span> {agent.office}
+                  </p>
+                  {agent.email && (
+                    <p>
+                      <span className="font-bold">Email:</span> {agent.email}
+                    </p>
+                  )}
+                  <button onClick={() => setExpand(true)} className="bg-red-600 mt-2 text-white p-1 px-2 rounded-md hover:bg-red-700 transition duration-300">
+                    More Info
+                  </button>
+                </div>
+              </li>
+              )
+          })}
         </ul>
       </div>
     </div>

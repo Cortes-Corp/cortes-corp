@@ -25,7 +25,7 @@ export default function UnderCarousel() {
       <div className="flex  mt-[-2.5rem] justify-center gap-5 sm:gap-20 lg:gap-32">
         {items.map((item, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className="rounded-full w-[7rem] h-[7rem] overflow-hidden relative border-[10px] border-white bg-slate-50 se:w-[8rem] se:h-[8rem] md:w-[10rem] md:h-[10rem] lg:w-[12rem] lg:h-[12rem]">
+            <div className="rounded-full w-[7rem] h-[7rem] overflow-hidden  relative border-[10px] border-white  cursor-pointer transition-all duration-300 bg-slate-50 se:w-[8rem] se:h-[8rem] md:w-[10rem] md:h-[10rem] lg:w-[12rem] lg:h-[12rem]">
               <Image
                 src={item.src}
                 layout="fill"
