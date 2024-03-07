@@ -8,18 +8,17 @@ export default function Agents() {
       cell: "(347)-993-2555",
       office: "(516)-620-9059",
       email: "ckhanat@yahoo.com",
-      src: "/cathia.png", // Make sure the path is correct and the image exists in your public directory
-      width: 80, // Example width, adjust as needed
-      height: 80, // Example height, adjust as needed to maintain the aspect ratio
+      src: "/cathia.png", 
+      width: 80, 
+      height: 80,
     },
     {
       name: "Humna Imran",
       cell: "(516)-405-9640",
       office: "(516)-292-2131",
       email: "humna.cortescorp@gmail.com",
-      src: "/humna.png", // Make sure the path is correct and the image exists in your public directory
-      width: 80, // Adjust as needed
-      height: 80, // Adjust as needed
+      src: "/humna.png", 
+      height: 80, 
     },
   ];
 
