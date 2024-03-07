@@ -640,6 +640,9 @@ body{
 .h-\[10rem\]{
   height: 10rem;
 }
+.h-\[100vh\]{
+  height: 100vh;
+}
 .w-10{
   width: 2.5rem;
 }
@@ -669,6 +672,15 @@ body{
 }
 .w-screen{
   width: 100vw;
+}
+.w-\[100vw\]{
+  width: 100vw;
+}
+.w-\[34rem\]{
+  width: 34rem;
+}
+.w-96{
+  width: 24rem;
 }
 .min-w-0{
   min-width: 0px;

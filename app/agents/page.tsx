@@ -41,7 +41,7 @@ export default function Agents() {
               return (
                 <li
                 key={index}
-                className={`w-[96vw] sm:w-[34rem] bg-slate-50 p-5 ${!expand && 'h-[10rem]'}  ${expand && ' h-[20rem]   z-[500] relative inset-0 m-auto shadow-xl scale-[1.7]' }    justify-between   transition-all duration-500 rounded-xl shadow flex  gap-20`}>
+                className={`w-[96vw] sm:w-[34rem] bg-slate-50 p-5     justify-between   transition-all duration-500 rounded-xl shadow flex  gap-20`}>
                 <div className="flex flex-col items-center">
                   <div className="flex shadow-md justify-center items-center rounded-full overflow-hidden w-20 h-20">
                     <Image
