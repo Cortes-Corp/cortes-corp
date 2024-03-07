@@ -3,8 +3,9 @@ import Navbar from "../components/Navbar";
 import Image from "next/image";
 import AgentPopup from "./AgentPopup";
 import { useState } from "react";
+import { Agent } from "./AgentPopup";
 export default function Agents() {
-
+  const [agent, setAgent] = useState<Agent | null>(null)
    const agents = [
     {
       name: "Cathia Lhanat",
@@ -25,21 +26,28 @@ export default function Agents() {
       height: 80, // Adjust as needed
     },
   ];
+
   
   return (
     <div>
       <Navbar />
-
+      <AgentPopup agent={agent} />
       <div className="p-5 flex flex-col items-center">
         <h1 className="text-3xl">Agents</h1>
         <div>
-          <AgentPopup></AgentPopup>
+        
         </div>
         <ul className="mt-16 flex flex-col gap-10">
           {agents.map((agent, index) => {
             const [expand, setExpand] = useState(false)
+            const handleExpand = () => {
+              setAgent(agents[index])
+              setExpand(true)
+            }
+            
               return (
                 <li
+                
                 key={index}
                 className={`w-[96vw] sm:w-[34rem] bg-slate-50 p-5     justify-between   transition-all duration-500 rounded-xl shadow flex  gap-20`}>
                 <div className="flex flex-col items-center">
@@ -67,15 +75,20 @@ export default function Agents() {
                       <span className="font-bold">Email:</span> {agent.email}
                     </p>
                   )}
-                  <button onClick={() => setExpand(true)} className="bg-red-600 mt-2 text-white p-1 px-2 rounded-md hover:bg-red-700 transition duration-300">
+                  <button onClick={handleExpand} className="bg-red-600 mt-2 text-white p-1 px-2 rounded-md hover:bg-red-700 transition duration-300">
                     More Info
                   </button>
                 </div>
+                
+                
+                
               </li>
               )
           })}
         </ul>
+        
       </div>
+      
     </div>
   );
 }
