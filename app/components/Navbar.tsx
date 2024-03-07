@@ -12,7 +12,7 @@ export default function Navbar() {
   ];
   const path = usePathname()
   return (
-    <div className="sticky z-[100]  top-0">
+    <div className="sticky z-[10]  top-0">
       <nav className="bg-white   border-gray-200  p-2 md:p-0">
         <div className="flex flex-wrap items-center justify-between mx-5 ">
           <Image
