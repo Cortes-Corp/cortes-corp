@@ -18,7 +18,8 @@ export default function Agents() {
       office: "(516)-292-2131",
       email: "humna.cortescorp@gmail.com",
       src: "/humna.png", 
-      height: 80, 
+      height: 80,
+      width: 80
     },
   ];
 
