@@ -6,7 +6,7 @@ interface PageProps {
 }
 interface PersonInfo {
   fullName: string;
-  bio: string;
+  bio: Array<string>;
   img: string;
 }
 
@@ -14,7 +14,7 @@ interface Data {
   [key: string]: PersonInfo;
 }
 function page({ params }: PageProps) {
-  const agent = (data as Data)[params.person];
+  const agent = (data as any)[params.person];
   if (agent) {
     return (
       <div>

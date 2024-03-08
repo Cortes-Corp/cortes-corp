@@ -18,15 +18,19 @@ export default function Home() {
   return (
     <div className="  w-full ">
       
+      
+      <div className="sticky z-[600] top-0">
       <Navbar />
-
-        
       <div className="relative  items-center">
         <div className="absolute top-0 left-0 right-0 z-10 p-2 bg-black bg-opacity-75">
           <ListingSearchBar />
         </div>
-        <ListingCarousel />
+       
       </div>
+      
+      </div>
+      <ListingCarousel />
+     
       <UnderCarousel />
       <div className="pl-5 mb-10">
         {/* <ListingCard1 house={house1} /> */}

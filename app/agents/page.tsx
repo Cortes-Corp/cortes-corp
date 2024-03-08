@@ -12,7 +12,7 @@ export default function Agents() {
       cell: "(347)-993-2555",
       office: "(516)-620-9059",
       email: "ckhanat@yahoo.com",
-      bio: "Cathia Khanat is an exceptional real estate professional who consistently demonstrates her expertise, strong negotiation skills, and unmatched dedication to achieving outstanding results for her clients. With over 20 years of experience in the industry, Cathia has developed an extensive network and a deep understanding of the local real estate market. Known for her exceptional customer service and responsiveness, Cathia puts her client’s needs and goals at the forefront of every transaction. Whether buying or selling a property, she takes the time to carefully listen to her clients, understand their unique requirements, and provide them with tailored solutions.\nOne of Cathias key strengths is her ability to accurately analyze market trends and price properties competitively. By conducting thorough market research and utilizing cutting-edge technologies, she ensures that her clients receive the maximum value for their investment. Throughout the sales process, Cathia remains proactive in her communication, keeping clients updated on the progress of their transactions and providing detailed insights and recommendations. She handles negotiations with finesse and determination, consistently achieving favorable outcomes that exceed client expectations.\nCathias success in the real estate industry can be attributed to her strong work ethic, attention to detail, and utmost professionalism. She is a dependable and trustworthy partner, guiding clients through the complex process of buying or selling a property with ease. With a proven track record of achieving exceptional sales results, Cathia Khanat is the go-to real estate expert for anyone seeking a top-tier professional to navigate the intricacies of the market and ensure a seamless and rewarding real estate experience.",
+      bio: "Cathia Khanat is an exceptional real estate professional with over 20 years of experience, known for her expertise, strong negotiation skills, and dedication to her clients. She has developed an extensive network and understands the local market deeply, always prioritizing her client’s needs in every transaction. Cathia's ability to analyze market trends and price properties effectively ensures maximum value for her clients’ investments. She maintains proactive communication throughout the sales process, offering detailed insights and handling negotiations with finesse to exceed client expectations.\nCathia's success stems from her strong work ethic, attention to detail, and professionalism, making her a dependable partner in navigating the complex real estate market. Her track record of exceptional sales results establishes her as a top-tier real estate expert for those seeking a rewarding property buying or selling experience.",
       src: "/cathia.png", // Make sure the path is correct and the image exists in your public directory
       width: 80, // Example width, adjust as needed
       height: 80, // Example height, adjust as needed to maintain the aspect ratio
@@ -33,7 +33,10 @@ export default function Agents() {
   return (
     <div>
       <Navbar />
-      <AgentPopup agent={agent} />
+      
+        <AgentPopup agent={agent} />
+    
+      
       <div className="p-5 flex flex-col items-center">
         <h1 className="text-3xl">Agents</h1>
         <div>
@@ -51,7 +54,7 @@ export default function Agents() {
                 <li
                 
                 key={index}
-                className={`w-[96vw] sm:w-[34rem] bg-slate-50 p-5     justify-between   transition-all duration-500 rounded-xl shadow flex  gap-20`}>
+                className={`w-[96vw] sm:w-[34rem] bg-slate-50 p-5     justify-between   transition-all duration-500 rounded-xl  flex  gap-20`}>
                 <div className="flex flex-col items-center">
                   <div className="flex shadow-md justify-center items-center rounded-full overflow-hidden w-20 h-20">
                     <Image
@@ -77,7 +80,7 @@ export default function Agents() {
                       <span className="font-bold">Email:</span> {agent.email}
                     </p>
                   )}
-                  <button onClick={handleExpand} className="bg-red-600 mt-2 text-white p-1 px-2 rounded-md hover:bg-red-700 transition duration-300">
+                  <button onClick={handleExpand} className="bg-red-600 mt-2 scale-[0.9] text-white py-[0.3rem] px-3 rounded-md hover:bg-red-700 transition duration-300">
                     More Info
                   </button>
                 </div>

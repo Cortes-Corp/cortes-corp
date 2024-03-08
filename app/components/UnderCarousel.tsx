@@ -35,7 +35,7 @@ export default function UnderCarousel() {
               />
             </div>
             <h3 className="text-black text-center">{item.title}</h3>
-            <p className="text-xs mt-1 text-gray-500 text-center">
+            <p className="text-xs mt-1 text-red-500 text-opacity-80 text-center">
               {item.description}
             </p>
           </div>
