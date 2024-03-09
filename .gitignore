@@ -36,3 +36,5 @@ Thumbs.db
 # package-lock.json
 # Note: Uncomment the above line if you decide not to track the package-lock.json file, but tracking it is usually recommended for better consistency across environments.
 
+#  Ignore Next.js build artifacts and cache files
+.next/
