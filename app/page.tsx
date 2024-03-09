@@ -38,7 +38,7 @@ export default function Home() {
       </div>
       
      
-      <UnderCarousel />
+      {/* <UnderCarousel /> */}
       <div className="pl-5 pb-10">
         {/* <ListingCard1 house={house1} /> */}
       </div>

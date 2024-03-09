@@ -17,6 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
   
@@ -28,16 +29,44 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
   ];
   const handleProfileClick = () => {};
+  
   const path = usePathname();
-  const isWhite = path !== '/'
+
+  let isWhite = path !== '/'
+  
   const { user, isAuthenticated, isLoading } = useKindeBrowserClient();
   console.log(user);
+
+  
+  const navScroll = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState<boolean | null>(null)
+
+  const handleScroll = () => {
+      
+      if (window.scrollY >= 5) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    
+  };
+
+
+  useEffect(() => {
+      
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      
+    }
+   
+  });
   return (
-    <div className={`${isWhite? 'sticky border-b bg-white' : 'fixed'} z-[600] w-full  top-0`}>
-      <nav className="bg-transparent   border-gray-200  p-2 md:p-0">
+    <div  className={`${isWhite? 'sticky border-b  bg-white' : `fixed   ${scrolled && ' bg-white  ' }  `}  z-[600] w-full    top-0`}>
+      <nav className={"bg-transparent   border-b-gray-200  duration-300  p-2 md:p-0"}>
         <div className="flex mx-5  items-center justify-between ">
           <Image
-            src={isWhite? "/cortes-corp-logo2.png" : "/cortes-corp-logo .svg"}
+            src={isWhite || scrolled? "/cortes-corp-logo2.png" : "/cortes-corp-logo .svg"}
             width={150}
             height={1}
             alt="cortes corp logo" className=""></Image>
@@ -78,7 +107,7 @@ export default function Navbar() {
                         path === "/" + link.name.toLowerCase()
                           ? "text-white"
                           : "text-white"
-                      } ${isWhite && 'md:text-black'} rounded hover:bg-gray-100  md:hover:bg-transparent md:border-0 md:pt-1 pt-1 md:hover:text-red-600   md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}>
+                      } ${(isWhite || scrolled) && 'md:text-black'} ${(!scrolled || isWhite ) && 'text-gray-100'} font-light rounded hover:bg-gray-100  md:hover:bg-transparent md:border-0 md:pt-1 pt-1 md:hover:text-red-600   md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}>
                       {link.name}
                     </div>
                   </Link>
