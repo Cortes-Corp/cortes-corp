@@ -48,7 +48,7 @@ export default function Agents() {
                 key={index}
                 className={` w-[19rem]  hover:shadow-lg relative py-20 pt-15  bg-white p-5     justify-between   transition-all duration-500   flex-col  gap-20`}
               >
-                <div className="absolute translate-y-[-5rem] translate-x-[-1.2rem]  bg-red-600 h-[30%] w-full"> </div>
+                <div className="absolute translate-y-[-5rem] translate-x-[-1.2rem] bg-red-600 h-[30%] w-full"> </div>
                 <div className="flex mb-5 gap-2  flex-col items-center">
                   <div className="flex shadow-md border-[5px] border-white z-[200]  justify-center  items-center rounded-full overflow-hidden w-[9rem] h-[9rem]">
                     <Image

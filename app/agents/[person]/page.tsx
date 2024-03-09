@@ -57,7 +57,7 @@ function page({ params }: PageProps) {
                 <div className="flex-col gap-[5rem]">
                   {agent.bio.split("\n").map((section: string, index: number) => {
                     return (
-                      <p key={index}>
+                      <p className="font-light" key={index}>
                         {section} <br /> <br />
                       </p>
                     );
