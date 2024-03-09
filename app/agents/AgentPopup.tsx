@@ -19,14 +19,14 @@ export default function AgentPopup({ agent }: agentProps) {
         <div className="flex bg-white border w-sreen h-screen   overflow-scroll m-auto">
           <div className="    pb-2 items-center sticky top-0  bg-white  mx-auto pt-6">
             <div className="flex    flex-col">
-              <div className="  shadow-md justify-center items-center pl-5  overflow-hidden w-[35rem] ">
+              <div className="    justify-center items-center pl-5  overflow-hidden w-[32rem] h-[35rem] ">
                 <Image
                   src={agent.src}
                   alt={agent.name}
                   width={500}
                   height={500}
                   objectFit="cover"
-                  className=""
+                  className="scale-[1] "
                 />
               </div>
             </div>

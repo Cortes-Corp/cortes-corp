@@ -16,12 +16,15 @@ export default function ListingCarousel() {
           loop: true,
         }}>
         <CarouselContent>
-          <CarouselItem className="">
+          <CarouselItem >
+           
             <img
-              className="  object-cover w-full h-[20rem] sm:h-[30rem] md:h-[40rem] 2xl:h-[50rem]"
+              className=" b object-cover w-full h-[20rem] sm:h-[30rem] md:h-[40rem] 2xl:h-[50rem]"
               src="https://dwgyu36up6iuz.cloudfront.net/heru80fdn/image/upload/c_fill,d_placeholder_architecturaldigest.png,fl_progressive,g_face,h_1080,q_80,w_1920/v1638285654/architecturaldigest_on-the-market-on-the-market-sunset-noir.jpg"
               alt="..."
             />
+            
+            
           </CarouselItem>
           <CarouselItem>
             <img

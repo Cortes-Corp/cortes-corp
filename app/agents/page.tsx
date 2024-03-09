@@ -8,7 +8,7 @@ export default function Agents() {
   const [agent, setAgent] = useState<Agent | null>(null)
    const agents = [
     {
-      name: "Cathia Lhanat",
+      name: "Cathia Khanat",
       cell: "(347)-993-2555",
       office: "(516)-620-9059",
       email: "ckhanat@yahoo.com",
@@ -66,18 +66,18 @@ export default function Agents() {
                       className="rounded-full"
                     />
                   </div>
-                  <p className="font-bold text-center">{agent.name}</p>
+                  <p className="font-medium text-center">{agent.name}</p>
                 </div>
                 <div className={`flex flex-col items-center`}>
                   <p >
-                    <span className='font-bold'>Cell:</span> {agent.cell}
+                    <span className='font-medium'>Cell:</span> {agent.cell}
                   </p>
                   <p>
-                    <span className="font-bold">Office:</span> {agent.office}
+                    <span className="font-medium">Office:</span> {agent.office}
                   </p>
                   {agent.email && (
                     <p>
-                      <span className="font-bold">Email:</span> {agent.email}
+                      <span className="font-medium">Email:</span> {agent.email}
                     </p>
                   )}
                   <button onClick={handleExpand} className="bg-red-600 mt-2 scale-[0.9] text-white py-[0.3rem] px-3 rounded-md hover:bg-red-700 transition duration-300">

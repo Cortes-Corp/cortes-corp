@@ -45,7 +45,7 @@ export default function Navbar() {
           </button>
        
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium items-center flex flex-col p-3 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="font-normal items-center flex flex-col p-3 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href}>
@@ -57,7 +57,7 @@ export default function Navbar() {
               ))}
               <button
                 type="button"
-                className="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none dark:bg-red-600 dark:hover:bg-red-700 focus:ring-2 focus:ring-red-600 dark:focus:ring-red-700 self-center transition-all duration-300">
+                className="text-white bg-red-600 hover:bg-red-700 font-normal rounded-lg text-sm px-5 py-2.5 focus:outline-none dark:bg-red-600 dark:hover:bg-red-700 focus:ring-2 focus:ring-red-600 dark:focus:ring-red-700 self-center transition-all duration-300">
                 Sign in
               </button>
             </ul>
