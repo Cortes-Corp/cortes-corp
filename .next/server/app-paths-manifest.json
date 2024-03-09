@@ -1,6 +1,6 @@
 {
-  "/not-found": "app/not-found.js",
   "/page": "app/page.js",
   "/agents/page": "app/agents/page.js",
+  "/agents/[person]/page": "app/agents/[person]/page.js",
   "/api/auth/[kindeAuth]/route": "app/api/auth/[kindeAuth]/route.js"
 }

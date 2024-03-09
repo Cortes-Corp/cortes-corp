@@ -31,7 +31,7 @@ function SlideText() {
         Find your
       </h1>
       <span style={{ fontFamily: "Merriweather" }}
-        className=" font-bold text-center  text-white pb-5 text-[3rem] " key={word}  data-aos={ !isFirstRender &&`zoom-out`}>
+        className=" text-white font-bold text-center   pb-5 text-[3rem] " key={word}  data-aos={ !isFirstRender &&`zoom-out`}>
         {words[word]}
       </span>
     </div>
