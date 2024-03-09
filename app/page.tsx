@@ -5,6 +5,7 @@ import ListingCarousel from "./components/ListingCarousel";
 import HomeCards from "./components/HomeCards";
 import UnderCarousel from "./components/UnderCarousel";
 import ListingCard1, { houseCardObj } from "./components/ui/ListingCard1";
+import SlideText from "./components/SlideText";
 
 const house1: houseCardObj = {
   price: "$1,400,000",
@@ -18,17 +19,27 @@ export default function Home() {
   return (
     <div className="  w-full ">
       
-      <Navbar />
-
+      
+      <div className="sticky z-[9] top-0">
+      {/* <Navbar /> */}
+      <div className="relative   items-center">
         
-      <div className="relative  items-center">
-        <div className="absolute top-0 left-0 right-0 z-10 p-2 bg-black bg-opacity-75">
+        <div className="absolute  flex-col justify-center   top-[12rem] left-0 right-0 z-10 p-2 ">
+          <SlideText />
           <ListingSearchBar />
         </div>
-        <ListingCarousel />
+       
       </div>
+      
+      </div>
+      <div className="">
+        
+      <ListingCarousel />
+      </div>
+      
+     
       <UnderCarousel />
-      <div className="pl-5 mb-10">
+      <div className="pl-5 pb-10">
         {/* <ListingCard1 house={house1} /> */}
       </div>
     </div>

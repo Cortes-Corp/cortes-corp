@@ -1,7 +1,7 @@
 export default function ListingSearchBar() {
   return (
     <div className="">
-      <form className="max-w-md mx-auto">
+      <form className="max-w-lg  mx-auto">
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
@@ -27,13 +27,13 @@ export default function ListingSearchBar() {
           <input
             type="search"
             id="default-search"
-            className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-red-600 focus:border-red-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600"
+            className="block text-[1rem] w-full py-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-red-600 focus:border-red-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600"
             placeholder="Search City, County, or ZIP Code"
             required
           />
           <button
             type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-600">
+            className="text-white absolute mb-[0.2rem]  end-2.5 bottom-2.5 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300   text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-600">
             Search
           </button>
         </div>
