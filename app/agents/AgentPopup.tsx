@@ -66,7 +66,7 @@ export default function AgentPopup({ agent }: agentProps) {
             </div>
             <button
                 type="button"
-                className="text-red-600 border border-red-600 hover:text-white bg-white hover:bg-red-600 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none dark:bg-red-600 dark:hover:bg-red-700 focus:ring-2 focus:ring-red-600 dark:focus:ring-red-700 self-center transition-all duration-300">
+                className="text-red-600 border border-red-600 hover:text-white bg-white hover:bg-red-600 font-medium text-sm px-5 py-2.5 focus:outline-none dark:bg-red-600 dark:hover:bg-red-700 focus:ring-2 focus:ring-red-600 dark:focus:ring-red-700 self-center transition-all duration-300">
                 CONTACT
               </button>
           </div>

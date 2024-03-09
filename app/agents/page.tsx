@@ -32,7 +32,7 @@ export default function Agents() {
   
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       
         <AgentPopup agent={agent} />
     
@@ -80,7 +80,7 @@ export default function Agents() {
                       <span className="font-medium">Email:</span> {agent.email}
                     </p>
                   )}
-                  <button onClick={handleExpand} className="bg-red-600 mt-2 scale-[0.9] text-white py-[0.3rem] px-3 rounded-md hover:bg-red-700 transition duration-300">
+                  <button onClick={handleExpand} className="bg-red-600 mt-2 scale-[0.9] text-white py-[0.3rem] px-3  hover:bg-red-700 transition duration-300">
                     More Info
                   </button>
                 </div>
