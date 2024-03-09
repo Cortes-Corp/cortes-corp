@@ -15,8 +15,8 @@ interface agentProps {
 export default function AgentPopup({ agent }: agentProps) {
   return (
     agent && (
-      <div className="flex-col absolute z-[100] inset-0 m-auto text-left bg-black bg-opacity-[40%]  w-screen h-screen">
-        <div className="flex bg-white border w-sreen h-screen   overflow-scroll m-auto">
+      <div className="flex-col absolute pt-[4rem] z-[100] inset-0 m-auto text-left   w-screen h-screen">
+        <div className="flex bg-white  w-sreen h-screen   overflow-scroll m-auto">
           <div className="    pb-2 items-center sticky top-0  bg-white  mx-auto pt-6">
             <div className="flex    flex-col">
               <div className="    justify-center items-center pl-5  overflow-hidden w-[32rem] h-[35rem] ">

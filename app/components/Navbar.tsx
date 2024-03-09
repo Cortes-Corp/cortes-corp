@@ -33,14 +33,14 @@ export default function Navbar() {
   const { user, isAuthenticated, isLoading } = useKindeBrowserClient();
   console.log(user);
   return (
-    <div className={`${isWhite? 'sticky' : 'fixed'} z-[600] w-full  top-0`}>
+    <div className={`${isWhite? 'sticky border-b bg-white' : 'fixed'} z-[600] w-full  top-0`}>
       <nav className="bg-transparent   border-gray-200  p-2 md:p-0">
         <div className="flex mx-5  items-center justify-between ">
           <Image
             src={isWhite? "/cortes-corp-logo2.png" : "/cortes-corp-logo .svg"}
             width={150}
             height={1}
-            alt="cortes corp logo" className="translate-y-[-0.4rem]"></Image>
+            alt="cortes corp logo" className=""></Image>
             
 
 
@@ -78,7 +78,7 @@ export default function Navbar() {
                         path === "/" + link.name.toLowerCase()
                           ? "text-white"
                           : "text-white"
-                      } ${isWhite && 'md:text-black'} rounded hover:bg-gray-100  md:hover:bg-transparent md:border-0 md:hover:text-red-600   md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}>
+                      } ${isWhite && 'md:text-black'} rounded hover:bg-gray-100  md:hover:bg-transparent md:border-0 md:pt-1 pt-1 md:hover:text-red-600   md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}>
                       {link.name}
                     </div>
                   </Link>
