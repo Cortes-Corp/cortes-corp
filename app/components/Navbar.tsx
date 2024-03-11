@@ -63,7 +63,7 @@ export default function Navbar() {
   });
   return (
     <div  className={`${isWhite? 'sticky border-b  bg-white' : `fixed   ${scrolled && ' bg-white  ' }  `}  z-[600] w-full    top-0`}>
-      <nav className={"bg-transparent   border-b-gray-200  duration-300  p-2 md:p-0"}>
+      <nav className={"bg-transparent mx-5   border-b-gray-200  duration-300  p-2 md:p-0"}>
         <div className="flex mx-5  items-center justify-between ">
           <Image
             src={isWhite || scrolled? "/cortes-corp-logo2.png" : "/cortes-corp-logo .svg"}
