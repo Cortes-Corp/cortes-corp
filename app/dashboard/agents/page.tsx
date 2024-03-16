@@ -1,6 +1,9 @@
-
+import AgentCards from "./agentCards"
 export default function Agents() {
     return (
-        <div></div>
+        <div className="w-full">
+            <AgentCards></AgentCards>
+
+        </div>
     )
 }

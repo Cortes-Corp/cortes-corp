@@ -20,6 +20,7 @@ const config = {
     },
     extend: {
       colors: {
+        "dash-gray": "#49586D",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
