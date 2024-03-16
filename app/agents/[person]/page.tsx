@@ -1,7 +1,6 @@
 import Navbar from "@/app/components/Navbar";
 
 import Image from "next/image";
-import { agents } from "../page";
 import { useEffect, useState } from "react";
 
 interface PageProps {
@@ -18,13 +17,12 @@ interface Agent {
 }
 
 const getAgents = async () => {
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${BASE_URL}/api/agent`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch agents")
-    }
-    return res.json()
-
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const res = await fetch(`${BASE_URL}/api/agent`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch agents");
+  }
+  return res.json();
 };
 
 export default async function page({ params }: PageProps) {

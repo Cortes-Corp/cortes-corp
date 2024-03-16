@@ -1,4 +1,4 @@
-"use client";
+
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import AgentPopup from "./AgentPopup";
@@ -6,30 +6,18 @@ import { useState } from "react";
 import { Agent } from "./AgentPopup";
 import Link from "next/link";
 
-export const agents = [
-  {
-    name: "Cathia Khanat",
-    cell: "(347)-993-2555",
-    office: "(516)-620-9059",
-    email: "ckhanat@yahoo.com",
-    bio: "Cathia Khanat is an exceptional real estate professional with over 20 years of experience, known for her expertise, strong negotiation skills, and dedication to her clients. She has developed an extensive network and understands the local market deeply, always prioritizing her client’s needs in every transaction. Cathia's ability to analyze market trends and price properties effectively ensures maximum value for her clients’ investments. She maintains proactive communication throughout the sales process, offering detailed insights and handling negotiations with finesse to exceed client expectations.\nCathia's success stems from her strong work ethic, attention to detail, and professionalism, making her a dependable partner in navigating the complex real estate market. Her track record of exceptional sales results establishes her as a top-tier real estate expert for those seeking a rewarding property buying or selling experience.",
-    src: "/cathia.png", // Make sure the path is correct and the image exists in your public directory
-    width: 80, // Example width, adjust as needed
-    height: 80, // Example height, adjust as needed to maintain the aspect ratio
-  },
-  {
-    name: "Humna Imran",
-    cell: "(516)-405-9640",
-    office: "(516)-292-2131",
-    email: "humna.cortescorp@gmail.com",
-    bio: "Meet Humna Imran – your dedicated real estate expert renowned for personalized service and unmatched market knowledge. With a passion for exceeding expectations, Humna offers tailored solutions, expert negotiation, and unwavering integrity. Whether buying, selling, or investing, trust Humna to guide you to success in the competitive real estate market.",
-    src: "/humna.png", // Make sure the path is correct and the image exists in your public directory
-    width: 80, // Adjust as needed
-    height: 80, // Adjust as needed
-  },
-];
-export default function Agents() {
-  const [agent, setAgent] = useState<Agent | null>(null);
+
+const getAgents = async () => {
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const res = await fetch(`${BASE_URL}/api/agent`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch agents")
+    }
+    return res.json()
+
+};
+export default async  function Agents() {
+  const agents: Array<Agent> = await getAgents();
 
   return (
     <div className=" bg-gray-100 h-screen ">
