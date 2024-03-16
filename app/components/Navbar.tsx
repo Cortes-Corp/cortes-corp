@@ -31,6 +31,7 @@ export default function Navbar() {
   const handleProfileClick = () => {};
   
   const path = usePathname();
+  if(path.includes("dashboard")) return
 
   let isWhite = path !== '/'
   
