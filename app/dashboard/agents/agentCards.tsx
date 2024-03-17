@@ -15,10 +15,15 @@ export default async function AgentCards() {
 
   return (
     <div className=" ">
-      <div className="p-5 flex flex-col items-center">
-        <h1 className="text-xl">AGENTS</h1>
+      <div className="p-5 flex flex-col   ">
+        <div className="flex gap-5 items-center">
+          <h1 className="text-xl font-medium">Agents</h1>
+          <button className="bg-red-600 text-white p-2  font-medium text-sm">
+            Add a new Agent
+          </button>
+        </div>
         <div></div>
-        <ul className="mt-16 flex  gap-10">
+        <ul className="mt-16 flex items-center  gap-10">
           {agents.map((agent, index) => {
             return (
               <li
@@ -38,7 +43,7 @@ export default async function AgentCards() {
                   <p className="font-medium text-md text-center">
                     {agent.name}
                   </p>
-                  <button className="bg-red-600 font-medium p-1 px-2 text-sm  text-white  hover:bg-red-700 transition duration-300">
+                  <button className="bg-red-600 mt-3 font-medium p-1 px-2 text-sm  text-white  hover:bg-red-700 transition duration-300">
                     More Info
                   </button>
                 </div>

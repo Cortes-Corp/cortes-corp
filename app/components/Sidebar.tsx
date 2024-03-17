@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Sidebar({ items }: any) {
-    const path = usePathname()
+  const path = usePathname();
   return (
     <div>
       <nav className="bg-slate-50 h-screen p-5 w-[300px]">
@@ -16,11 +16,18 @@ export default function Sidebar({ items }: any) {
           height={50}></Image>
         <h2 className="text-slate-400 mb-2">MAIN MENU</h2>
         <ul className="flex flex-col gap-5">
-                  {items.map((item: any) => {
-               const includes = path.toLowerCase().includes(item.title.toLowerCase());
+          {items.map((item: any) => {
+            const includes = path
+              .toLowerCase()
+              .includes(item.title.toLowerCase());
             return (
               <Link href={`/dashboard/${item.title}`}>
-                <li className={`flex transition-all  gap-2 items-center ${includes ? "text-red-600 bg-white p-2 rounded-md": "text-dash-gray" } ` }>
+                <li
+                  className={`flex transition-all  gap-2 items-center ${
+                    includes
+                      ? "text-red-600 bg-white p-2 rounded-md"
+                      : "text-dash-gray"
+                  } cursor-pointer `}>
                   <div className="">{item.icon}</div>
                   <p className="font-medium  ">
                     {item.title.slice(0, 1).toUpperCase() + item.title.slice(1)}
