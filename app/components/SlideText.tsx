@@ -10,6 +10,7 @@ function SlideText() {
     Aos.init();
   },[]);
   useEffect(() => {
+    console.log(process.env.DATABASE_URL)
       setIsFirstRender(false);
   }, [word]);
   useEffect(() => {
