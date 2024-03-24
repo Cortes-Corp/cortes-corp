@@ -9,6 +9,10 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: "vugicbzgqyjoziwgjvxr.supabase.co"
+            },
+            {
+                protocol: "https", // Ensure the protocol matches (http or https)
+                hostname: "www.chicagomag.com" // Add this line
             }
        ] 
     }

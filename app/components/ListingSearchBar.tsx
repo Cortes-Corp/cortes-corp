@@ -1,6 +1,6 @@
 export default function ListingSearchBar() {
   return (
-    <div className="">
+    <div className=" ">
       <form className="max-w-lg  mx-auto">
         <label
           htmlFor="default-search"

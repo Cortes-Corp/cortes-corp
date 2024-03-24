@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 export type houseCardObj = {
+  src: string;
   price: string;
   bedrooms: string;
   bathrooms: string;
@@ -11,35 +12,47 @@ interface listingCard1Props {
   house: houseCardObj;
 }
 
-function ListingCard1({house} : listingCard1Props) {
+function ListingCard1({ house }: listingCard1Props) {
   return (
-    <div className='text-gray-600' >
-      <div className="w-[15rem] ">
-        <div className="w-[15rem] rounded-[0.5rem] mb-2 overflow-hidden" >
-          <Image className=" transition-all duration-[400ms] scale-[1]  hover:scale-[1.1]" layout='responsive'  width={100} height={110} objectFit="cover" alt="listing" src='/house-1.jpeg'></Image>
+    <div className="w-[25rem] cursor-pointer hover:border-red-500 hover:border-[0.15rem] hover:shadow-2xl transition-all duration-100 border-[0.15rem] hover:rounded  border-transparent  h-[18rem] relative  overflow-hidden">
+      <div className="z-[9]">
+        <Image
+          alt="house listing"
+          layout="fill"
+          objectFit="cover"
+          src={
+            "https://www.chicagomag.com/wp-content/uploads/2022/08/C202209-312-Bauer-Mansion-exterior.jpg"
+          }
+        ></Image>
+        <div className="absolute inset-0 custom-vignette opacity-70"></div>
+      </div>
+      <div className="flex justify-between text-white pt-[52%]">
+        <div className=" relative  pl-5 ">
+          <h1 className="text-[1.4rem]">{house.price}</h1>
+          <div className="text-[0.8rem] font-light">
+            <p>
+              {house.address.split("\b")[0]}
+              <br />
+              {house.address.split("\b")[1]}
+            </p>
+          </div>
         </div>
 
-        <p className="font-bold text-[1.2rem] mb-1">$1,200,000</p>
 
-        <div id="specs" className='flex gap-3 mb-1'>
-          <div className="flex  gap-1">
-            <Image alt="metric" width="20" height='20' src="/bed.png" />
-            <p>{`${house.bedrooms}bd`}</p>
+        <div className=" h-[4rem] gap-1 pr-5 pt-5 font-thin relative flex text-center ">
+          <div className="border-r px-2 border-opacity-10">
+            <p>{house.bedrooms}</p>
+            <p>Beds</p>
           </div>
 
-          <div className="flex  gap-1">
-            <Image  alt="metric" width="20" height='20' src="/bath-tub.png" />
-            <p>{`${house.bathrooms}ba`}</p>
+          <div className="border-r px-2 border-opacity-10">
+            <p>{house.bathrooms}</p>
+            <p>Baths</p>
           </div>
-
-          <div className="flex  gap-1">
-            <Image className="scale-[0.9] rotate-[90deg]" alt="metric" width="20" height='20' src="/ruler.png" />
-            <p>{`${house.footage}sqft`}</p>
+          <div  className="pl-2">
+            <p>{house.footage}</p>
+            <p>Sq. ft.</p>
           </div>
-        </div>
-
-        <div>
-          <p>{house.address.split('\b')[0]}<br />{house.address.split('\b')[1]}</p>
         </div>
       </div>
     </div>
