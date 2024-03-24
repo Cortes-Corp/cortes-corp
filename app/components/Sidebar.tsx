@@ -10,10 +10,10 @@ export default function Sidebar({ items }: any) {
       <nav className="bg-slate-50 h-screen p-5 w-[300px]">
         <Image
           className="mb-6"
-          src="/logo-v2.svg"
+          src="/cortes-corp-logo2.png"
           alt="logo"
-          width={50}
-          height={50}></Image>
+          width={160}
+          height={100}></Image>
         <h2 className="text-slate-400 mb-2">MAIN MENU</h2>
         <ul className="flex flex-col gap-5">
           {items.map((item: any) => {
