@@ -1,23 +1,22 @@
+"use client"
 
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import AgentPopup from "./AgentPopup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Agent } from "./AgentPopup";
 import Link from "next/link";
+import { useAgents } from "../state/useAgents";
 
 
-const getAgents = async () => {
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${BASE_URL}/api/agent`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch agents")
-    }
-    return res.json()
 
-};
-export default async  function Agents() {
-  const agents: Array<Agent> = await getAgents();
+export default  function Agents() {
+  const { agents, fetchAgents} = useAgents();
+
+  useEffect(() => {
+    fetchAgents()
+  })
+  if (!agents) return;
 
   return (
     <div className=" bg-gray-100 h-screen ">
