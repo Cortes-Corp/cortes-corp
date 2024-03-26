@@ -49,18 +49,15 @@ export default function Navbar() {
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
+ 
+
   return (
     <div
+    
       className={`${
         isWhite
-          ? "sticky border-b  bg-white"
-          : `fixed   ${scrolled && " bg-white  "}  `
+          ? "absolute border-b  bg-white"
+          : `absolute   ${scrolled && " bg-white  "}  `
       }  z-[600] w-full    top-0`}>
       <nav
         className={

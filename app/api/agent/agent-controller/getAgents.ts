@@ -4,7 +4,7 @@ import { NextRequest } from "next/server";
 export default async function getAgents(req: NextRequest) {
   try {
     const agents = await prisma.agent.findMany();
-    console.log(agents);
+   
     return Response.json(agents);
   } catch (error) {
     console.error(error);

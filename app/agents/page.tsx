@@ -24,7 +24,7 @@ export default  function Agents() {
         <h1 className="text-[2rem]">AGENTS</h1>
         <div></div>
         <ul className="mt-16 flex  gap-10">
-          {agents.map((agent, index) => {
+          {agents.map((agent : any, index : any) => {
             return (
               <li
                 key={index}

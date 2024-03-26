@@ -1,86 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 938.54 193.24">
-  <defs>
-    <style>
-      .cls-1 {
-        letter-spacing: -.04em;
-      }
-
-      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
-        stroke-miterlimit: 10;
-      }
-
-      .cls-1, .cls-2, .cls-3, .cls-5, .cls-7, .cls-8 {
-        fill: #fff;
-      }
-
-      .cls-1, .cls-2, .cls-5, .cls-7, .cls-8 {
-        font-family: PTSans-Regular, 'PT Sans';
-        font-size: 159px;
-        isolation: isolate;
-        stroke: #fff;
-      }
-
-      .cls-2 {
-        letter-spacing: -.07em;
-      }
-
-      .cls-3, .cls-4, .cls-6 {
-        stroke-width: 2px;
-      }
-
-      .cls-3, .cls-6 {
-        stroke: #f42424;
-      }
-
-      .cls-4 {
-        stroke: #bda587;
-      }
-
-      .cls-4, .cls-9 {
-        fill: #bda587;
-      }
-
-      .cls-6 {
-        fill: none;
-      }
-
-      .cls-7 {
-        letter-spacing: -.11em;
-      }
-
-      .cls-8 {
-        letter-spacing: -.03em;
-      }
-
-      .cls-9, .cls-10 {
-        stroke-width: 0px;
-      }
-
-      .cls-10 {
-        fill: #f42424;
-      }
-    </style>
-  </defs>
-  <path class="cls-6" d="M80.06,80.13c-.26,23.44-1,52.31-1.26,75.74l15.51,1.87-93.83.41,19.64-1.96c-.12-23.28.05-57.75-.07-81.03-6.23,0-7.37-4.93-12.92-2.56,9.64-7.28,11.71-6.17,17.22-10.19,3.03-2.21,5.94-4.32,6.94-5.04,6.42-4.65,11.75-8.45,16.63-11.93,15.02-10.72,22.53-16.08,27.34-19.33,3.74-2.52,7.16-4.77,12.26-8.48,4.86-3.55,6.02-4.63,10.84-8.01,1.23-.86,3.97-2.78,8.01-5.66,1.1-.79,2.01-1.44,2.61-1.87l6.41,4.22,23.86,18.49,6.92.28v-3.53l35.01-.42,1.27-.14-.85,31.76,28.89,16.96c-5.44-1.89,2.05,2.56-8.18,4.63.75,19.87.17,43.34.18,62.46l-.25,18.7,6.75.93,5.88.46-80.3.27,11.19-2.19-.06-4.19c-.39-24.21-.15-48.51-.53-72.72"/>
-  <path class="cls-10" d="M76.1,76.23l-56.93,1.08,6.61-.1,60.58-.94,73.34-1.14,4.49-.07,59.14-1.08s-24.66-1.14-24.63-1.14l17.26,1.49,4.95-.48-40.31-23.18.85-31.76-36.28.56v3.53l-6.92-.28L107.98,0,.48,77.3h6.05"/>
-  <polyline class="cls-6" points="202.48 78.07 145.15 78.07 138.18 74.45"/>
-  <polyline class="cls-3" points="77.73 80.13 79.15 80.13 21.07 80.13"/>
-  <line class="cls-6" x1="86.36" y1="76.26" x2="79.15" y2="80.13"/>
-  <polyline class="cls-9" points="21.07 81.41 79.15 81.41 77.85 155.7 21.07 155.7"/>
-  <polyline class="cls-4" points="146.93 80.13 200.6 80.13 199.36 154.89 146.93 154.89"/>
-  <text class="cls-7" transform="translate(223.34 153.79)"><tspan x="0" y="0">C</tspan></text>
-  <text class="cls-7" transform="translate(223.34 153.79)"><tspan x="0" y="0">C</tspan></text>
-  <text class="cls-8" transform="translate(303.48 153.79)"><tspan x="0" y="0">o</tspan></text>
-  <text class="cls-8" transform="translate(303.48 153.79)"><tspan x="0" y="0">o</tspan></text>
-  <text class="cls-5" transform="translate(383.61 153.79)"><tspan x="0" y="0">r</tspan></text>
-  <text class="cls-5" transform="translate(383.61 153.79)"><tspan x="0" y="0">r</tspan></text>
-  <text class="cls-1" transform="translate(437.35 153.79)"><tspan x="0" y="0">t</tspan></text>
-  <text class="cls-1" transform="translate(437.35 153.79)"><tspan x="0" y="0">t</tspan></text>
-  <text class="cls-8" transform="translate(484.42 153.79)"><tspan x="0" y="0">es </tspan></text>
-  <text class="cls-8" transform="translate(484.42 153.79)"><tspan x="0" y="0">es </tspan></text>
-  <text class="cls-2" transform="translate(659.32 153.79)"><tspan x="0" y="0">c</tspan></text>
-  <text class="cls-2" transform="translate(659.32 153.79)"><tspan x="0" y="0">c</tspan></text>
-  <text class="cls-8" transform="translate(722.28 153.79)"><tspan x="0" y="0">orp</tspan></text>
-  <text class="cls-8" transform="translate(722.28 153.79)"><tspan x="0" y="0">orp</tspan></text>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 949.6 193.2" style="enable-background:new 0 0 949.6 193.2;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#F42424;stroke-width:2;stroke-miterlimit:10;}
+	.st1{fill:#F42424;}
+	.st2{fill:#FFFFFF;stroke:#F42424;stroke-width:2;stroke-miterlimit:10;}
+	.st3{fill:#BDA587;}
+	.st4{fill:#BDA587;stroke:#BDA587;stroke-width:2;stroke-miterlimit:10;}
+	.st5{fill:#FFFFFF;}
+	.st6{font-family:'PTSans-Regular';}
+	.st7{font-size:159px;}
+	.st8{letter-spacing:-17;}
+	.st9{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st10{letter-spacing:-4;}
+	.st11{letter-spacing:-6;}
+	.st12{letter-spacing:-11;}
+</style>
+<path class="st0" d="M80.1,80.1c-0.3,23.4-1,52.3-1.3,75.7l15.5,1.9l-93.8,0.4l19.6-2c-0.1-23.3,0-57.8-0.1-81
+	c-6.2,0-7.4-4.9-12.9-2.6c9.6-7.3,11.7-6.2,17.2-10.2c3-2.2,5.9-4.3,6.9-5c6.4-4.7,11.7-8.5,16.6-11.9c15-10.7,22.5-16.1,27.3-19.3
+	c3.7-2.5,7.2-4.8,12.3-8.5c4.9-3.6,6-4.6,10.8-8c1.2-0.9,4-2.8,8-5.7c1.1-0.8,2-1.4,2.6-1.9l6.4,4.2l23.9,18.5l6.9,0.3v-3.5l35-0.4
+	l1.3-0.1l-0.9,31.8l28.9,17c-5.4-1.9,2.1,2.6-8.2,4.6c0.8,19.9,0.2,43.3,0.2,62.5l-0.2,18.7l6.8,0.9l5.9,0.5l-80.3,0.3l11.2-2.2
+	l-0.1-4.2c-0.4-24.2-0.1-48.5-0.5-72.7"/>
+<path class="st1" d="M76.1,76.2l-56.9,1.1l6.6-0.1l60.6-0.9l73.3-1.1l4.5-0.1l59.1-1.1c0,0-24.7-1.1-24.6-1.1l17.3,1.5l4.9-0.5
+	l-40.3-23.2l0.9-31.8l-36.3,0.6V23l-6.9-0.3L108,0L0.5,77.3h6.1"/>
+<polyline class="st0" points="202.5,78.1 145.1,78.1 138.2,74.4 "/>
+<polyline class="st2" points="77.7,80.1 79.2,80.1 21.1,80.1 "/>
+<line class="st0" x1="86.4" y1="76.3" x2="79.2" y2="80.1"/>
+<polyline class="st3" points="21.1,81.4 79.2,81.4 77.8,155.7 21.1,155.7 "/>
+<polyline class="st4" points="146.9,80.1 200.6,80.1 199.4,154.9 146.9,154.9 "/>
+<text transform="matrix(1 0 0 1 223.34 153.79)" class="st5 st6 st7 st8">C</text>
+<text transform="matrix(1 0 0 1 223.34 153.79)" class="st9 st6 st7 st8">C</text>
+<text transform="matrix(1 0 0 1 223.34 153.79)" class="st5 st6 st7 st8">C</text>
+<text transform="matrix(1 0 0 1 223.34 153.79)" class="st9 st6 st7 st8">C</text>
+<text transform="matrix(1 0 0 1 303.48 153.79)" class="st5 st6 st7 st10">o</text>
+<text transform="matrix(1 0 0 1 303.48 153.79)" class="st9 st6 st7 st10">o</text>
+<text transform="matrix(1 0 0 1 303.48 153.79)" class="st5 st6 st7 st10">o</text>
+<text transform="matrix(1 0 0 1 303.48 153.79)" class="st9 st6 st7 st10">o</text>
+<text transform="matrix(1 0 0 1 383.61 153.79)" class="st5 st6 st7">r</text>
+<text transform="matrix(1 0 0 1 383.61 153.79)" class="st9 st6 st7">r</text>
+<text transform="matrix(1 0 0 1 383.61 153.79)" class="st5 st6 st7">r</text>
+<text transform="matrix(1 0 0 1 383.61 153.79)" class="st9 st6 st7">r</text>
+<text transform="matrix(1 0 0 1 437.35 153.79)" class="st5 st6 st7 st11">t</text>
+<text transform="matrix(1 0 0 1 437.35 153.79)" class="st9 st6 st7 st11">t</text>
+<text transform="matrix(1 0 0 1 437.35 153.79)" class="st5 st6 st7 st11">t</text>
+<text transform="matrix(1 0 0 1 437.35 153.79)" class="st9 st6 st7 st11">t</text>
+<text transform="matrix(1 0 0 1 484.42 153.79)" class="st5 st6 st7 st10">es</text>
+<text transform="matrix(1 0 0 1 484.42 153.79)" class="st9 st6 st7 st10">es</text>
+<text transform="matrix(1 0 0 1 484.42 153.79)" class="st5 st6 st7 st10">es</text>
+<text transform="matrix(1 0 0 1 484.42 153.79)" class="st9 st6 st7 st10">es</text>
+<text transform="matrix(1 0 0 1 659.32 153.79)" class="st5 st6 st7 st12">c</text>
+<text transform="matrix(1 0 0 1 659.32 153.79)" class="st9 st6 st7 st12">c</text>
+<text transform="matrix(1 0 0 1 659.32 153.79)" class="st5 st6 st7 st12">c</text>
+<text transform="matrix(1 0 0 1 659.32 153.79)" class="st9 st6 st7 st12">c</text>
+<text transform="matrix(1 0 0 1 722.28 153.79)" class="st5 st6 st7 st10">orp</text>
+<text transform="matrix(1 0 0 1 722.28 153.79)" class="st9 st6 st7 st10">orp</text>
+<text transform="matrix(1 0 0 1 722.28 153.79)" class="st5 st6 st7 st10">orp</text>
+<text transform="matrix(1 0 0 1 722.28 153.79)" class="st9 st6 st7 st10">orp</text>
 </svg>

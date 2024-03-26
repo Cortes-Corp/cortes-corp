@@ -5,9 +5,9 @@ export type Agent = {
   office: string;
   email: string;
   bio: string;
-  src: string; 
-  width: number; 
-  height: number; 
+  src: string; // Make sure the path is correct and the image exists in your public directory
+  width: number; // Example width, adjust as needed
+  height: number; // Example height, adjust as needed to maintain the aspect ratio
 };
 interface agentProps {
   agent: Agent | any;
