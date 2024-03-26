@@ -91,9 +91,9 @@ html {
 background-size: cover;
 background-repeat: no-repeat;
 background-position: center center;
-  
+
 }
 
 .custom-vignette {
-  background: linear-gradient(to top, rgba(0, 0, 0, 1) 3%, transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 25%, transparent 40%);
 }

@@ -1,7 +1,7 @@
 import Navbar from "@/app/components/Navbar";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+
 
 interface PageProps {
   params: any;
@@ -22,13 +22,17 @@ const getAgents = async () => {
   if (!res.ok) {
     throw new Error("Failed to fetch agents");
   }
-  return res.json();
+
+  return res.json()
 };
 
 export default async function page({ params }: PageProps) {
+  console.log('hello')
+  console.log(params)
   const agents: Array<Agent> = await getAgents();
+  console.log(agents)
   const agent = agents[params.person];
-
+  console.log(agent)
   if (agent)
     return (
       <div className="flex-col absolute pt-[4rem] z-[100] inset-0 m-auto text-left   w-screen h-screen">

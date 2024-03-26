@@ -1,12 +1,7 @@
 {
-<<<<<<< HEAD
   "/not-found": "app/not-found.js",
-  "/agents/page": "app/agents/page.js",
+  "/agents/[person]/page": "app/agents/[person]/page.js",
   "/page": "app/page.js",
-  "/api/auth/[kindeAuth]/route": "app/api/auth/[kindeAuth]/route.js"
-=======
-  "/agents/page": "app/agents/page.js",
   "/api/auth/[kindeAuth]/route": "app/api/auth/[kindeAuth]/route.js",
-  "/api/agent/route": "app/api/agent/route.js"
->>>>>>> e8b13308122e68ac5f9d0782377a626c798ac2ec
+  "/agents/page": "app/agents/page.js"
 }
