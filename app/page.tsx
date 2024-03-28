@@ -73,7 +73,7 @@ export default function Home() {
         <ListingCarousel />
       </div>
 
-      <div className="w-[90%] md:w-[80%] lg:w-[75%]   pt-20  m-auto">
+      <div  className="w-[90%] mb-[5rem] md:w-[80%] lg:w-[75%]   pt-20  m-auto">
         <h1 className="text-[1.7rem]    pb-10">Featured Listings</h1>
         <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
           {houses.map((house) => (
@@ -81,6 +81,35 @@ export default function Home() {
               <ListingCard1 house={house} />
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className=" h-[70vh]  w-[100vw] pt-[20rem] relative">
+        
+        <div className=" z-[54] bg-white top-[0rem]    shadow-lg w-[50%]  h-[90%]  0 text-center inset-0 m-auto absolute">
+          <h1 className=" el  w-full  text-[10rem] text-gray-500">“</h1>
+          <h1 className="w-[80%] text-[1.2rem] font-thin m-auto text-gray-500 ">
+            Gully is a hands on, experienced realtor. She was reliable with all
+            my affairs while selling my house in Hempstead, LI. When a challenge
+            came up, she proactively provided me with the resources I needed to
+            resolve the issue. I recommend her to new buyers and sellers for her
+            patience and care; as well as seasoned investors with her
+            efficiencies.
+          </h1>
+        </div>
+
+        <div className="z-[20] w-full h-full bg-opacity-80 bg-white backdrop-blur-sm absolute"></div>
+        <div
+          style={{ filter: "brightness(300%)  contrast(90%) grayscale(100%)" }}
+          className="w-full h-full"
+        >
+          <Image
+            className="z-[19]"
+            alt="Testimonials"
+            layout="fill"
+            objectFit="cover"
+            src="/house2.jpg"
+          ></Image>
         </div>
       </div>
     </div>

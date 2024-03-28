@@ -24,7 +24,7 @@ function ListingCard1({ house }: listingCard1Props) {
     ></Image>
     <div className="absolute inset-0 custom-vignette opacity-70"></div>
   </div>
-  <div className="absolute bottom-0 left-0 right-0 p-2 px-3 flex justify-between text-white"> 
+  <div className="absolute bottom-0 bg left-0 right-0 p-2 px-3 flex justify-between text-white"> 
     <div>
         <h1 className="text-[1.4rem]">{house.price}</h1>
         <div className="text-[0.8rem] font-light">
