@@ -18,7 +18,7 @@ model Agent {
   id Int @id @default(autoincrement())
   name String
   bio String
-  src String
+  src String @unique
   cell String
   office String
   email String
