@@ -7,14 +7,10 @@ export default function Sidebar({ items }: any) {
   const path = usePathname();
   return (
     <div>
-      <nav className="bg-slate-50 h-screen p-5 w-[300px]">
-        <Image
-          className="mb-6"
-          src="/cortes-corp-logo2.png"
-          alt="logo"
-          width={160}
-          height={100}></Image>
-        <h2 className="text-slate-400 mb-2">MAIN MENU</h2>
+      <nav className="bg-red-600 h-screen p-5 w-[260px]">
+       <p className="text-2xl mb-6 text-white">Cortes Corp</p>
+      
+        <h2 className="text-gray-200 mb-2">MAIN MENU</h2>
         <ul className="flex flex-col gap-5">
           {items.map((item: any) => {
             const includes = path
@@ -25,11 +21,11 @@ export default function Sidebar({ items }: any) {
                 <li
                   className={`flex transition-all  gap-2 items-center ${
                     includes
-                      ? "text-red-600 bg-white p-2 rounded-md"
-                      : "text-dash-gray"
+                      ? "text-white bg-red-700 p-2 rounded-md"
+                      : "text-slate-200"
                   } cursor-pointer `}>
                   <div className="">{item.icon}</div>
-                  <p className="font-medium  ">
+                  <p className="  ">
                     {item.title.slice(0, 1).toUpperCase() + item.title.slice(1)}
                   </p>
                 </li>
