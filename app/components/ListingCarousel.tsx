@@ -34,7 +34,7 @@ export default function ListingCarousel() {
         <CarouselContent>
           {carouselItems.map((item) => (
             <CarouselItem key={item.src} className="">
-              <div className="top-black  absolute w-full h-full"></div>
+              <div className="top-black    absolute w-full h-full"></div>
               <img
                 className="object-cover w-full h-[30rem] sm:h-[30rem] md:h-[35rem] 2xl:h-[50rem]"
                 src={item.src}
