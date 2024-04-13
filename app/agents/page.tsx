@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Navbar from "../components/Navbar";
 import Image from "next/image";
@@ -8,23 +8,20 @@ import { Agent } from "./AgentPopup";
 import Link from "next/link";
 import { useAgents } from "../state/useAgents";
 
-
-
-export default  function Agents() {
-  const { agents, fetchAgents} = useAgents();
+export default function Agents() {
+  const { agents, fetchAgents } = useAgents();
 
   useEffect(() => {
-    fetchAgents()
-  })
-  if (!agents) return;
-
+    fetchAgents();
+  });
+  
   return (
     <div className=" bg-gray-100 h-screen ">
       <div className="p-5 flex flex-col items-center">
         <h1 className="text-[2rem]">AGENTS</h1>
         <div></div>
         <ul className="mt-16 flex  gap-10">
-          {agents.map((agent : any, index : any) => {
+          { agents && agents.map((agent: any, index: any) => {
             return (
               <li
                 key={index}

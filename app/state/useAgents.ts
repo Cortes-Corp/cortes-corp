@@ -4,6 +4,8 @@ import { Agent } from "@prisma/client";
 interface AgentStore {
   agents: null | Array<Agent>;
   isLoading: boolean;
+  openUpdateForm: boolean;
+  setOpenUpdateForm: (bool: boolean) => void
   setIsLoading: (bool: boolean) => void;
   setAgents: (newAgents: Array<Agent>) => void;
   refetchAgents: () => Promise<void>;
@@ -12,6 +14,8 @@ interface AgentStore {
 export const useAgents = create<AgentStore>((set, get) => ({
   agents: null,
   isLoading: false,
+  openUpdateForm: false,
+  setOpenUpdateForm: (bool) => (set({openUpdateForm: bool})),
   setIsLoading: (bool: boolean) => set({ isLoading: bool }),
   setAgents: (newAgents: Array<Agent>) => {
     set({ agents: newAgents });
@@ -46,3 +50,5 @@ export const useAgents = create<AgentStore>((set, get) => ({
     }
   },
 }));
+
+
