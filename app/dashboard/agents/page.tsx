@@ -1,8 +1,12 @@
-import AgentCards from "./agentCards";
-import AddAgentForm from "./addAgentForm";
+import AgentCards from "./AgentCards";
+import AddAgentForm from "./AddAgentForm";
 
 export default function Agents() {
+
+
   return (
+
+
     <div>
       <div className="w-full p-5">
         <div className="flex gap-5 items-center">
