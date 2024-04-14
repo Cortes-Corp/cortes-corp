@@ -1,5 +1,42 @@
 {
-  "node": {},
+  "node": {
+    "36e56e3d0f0c03d5e574b127f8a7975eea5cf7fd": {
+      "workers": {
+        "app/(pages)/chat/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbrandon%2Fdevelopment%2Fcortes-corp%2Fapp%2F(pages)%2Fchat%2Fchat-actions%2Factions.ts%22%2C%5B%22createMessage%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/(pages)/chat/[chatroom]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbrandon%2Fdevelopment%2Fcortes-corp%2Fapp%2F(pages)%2Fchat%2F%5Bchatroom%5D%2Fchat-actions%2Factions.ts%22%2C%5B%22%24%24ACTION_0%22%2C%22createMessage%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/(pages)/chat/page": "action-browser",
+        "app/(pages)/chat/[chatroom]/page": "action-browser"
+      }
+    },
+    "c42a77a854734095412446f70dbc184b5db59e08": {
+      "workers": {
+        "app/(pages)/chat/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbrandon%2Fdevelopment%2Fcortes-corp%2Fapp%2F(pages)%2Fchat%2Fchat-actions%2Factions.ts%22%2C%5B%22createMessage%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=true!",
+        "app/(pages)/chat/[chatroom]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbrandon%2Fdevelopment%2Fcortes-corp%2Fapp%2F(pages)%2Fchat%2F%5Bchatroom%5D%2Fchat-actions%2Factions.ts%22%2C%5B%22%24%24ACTION_0%22%2C%22createMessage%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/(pages)/chat/page": "action-browser",
+        "app/(pages)/chat/[chatroom]/page": "action-browser"
+      }
+    },
+    "d235e025ae3d6411c4554c01ed488921d3a59204": {
+      "workers": {
+        "app/(pages)/chat/[chatroom]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbrandon%2Fdevelopment%2Fcortes-corp%2Fapp%2F(pages)%2Fchat%2F%5Bchatroom%5D%2Fchat-actions%2Factions.ts%22%2C%5B%22%24%24ACTION_0%22%2C%22createMessage%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/(pages)/chat/[chatroom]/page": "action-browser"
+      }
+    },
+    "e9608891d24f211b5e02f281e060e2d45102e734": {
+      "workers": {
+        "app/(pages)/chat/[chatroom]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbrandon%2Fdevelopment%2Fcortes-corp%2Fapp%2F(pages)%2Fchat%2F%5Bchatroom%5D%2Fchat-actions%2Factions.ts%22%2C%5B%22%24%24ACTION_0%22%2C%22createMessage%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/(pages)/chat/[chatroom]/page": "action-browser"
+      }
+    }
+  },
   "edge": {},
-  "encryptionKey": "7A+VCVZtBr2iFKZYJ5a90+b5tTNXKwCdkry0k59tWBo="
+  "encryptionKey": "98eDnIqP/qRUeqGQDVTuuuSUJCYFONX2QF3WfP3Xmew="
 }
