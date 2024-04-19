@@ -1,11 +1,11 @@
 import Image from "next/image";
-import ListingSearchBar from "./components/ListingSearchBar";
-import Navbar from "./components/Navbar";
-import ListingCarousel from "./components/ListingCarousel";
-import HomeCards from "./components/HomeCards";
-import UnderCarousel from "./components/UnderCarousel";
-import ListingCard1, { houseCardObj } from "./components/ui/ListingCard1";
-import SlideText from "./components/SlideText";
+import ListingSearchBar from "../../components/ListingSearchBar";
+import Navbar from "../../components/Navbar";
+import ListingCarousel from "../../components/ListingCarousel";
+import HomeCards from "../../components/HomeCards";
+import UnderCarousel from "../../components/UnderCarousel";
+import ListingCard1, { houseCardObj } from "../../components/ui/ListingCard1";
+import SlideText from "../../components/SlideText";
 const houses = [
   {
     src: "https://www.chicagomag.com/wp-content/uploads/2022/08/C202209-312-Bauer-Mansion-exterior.jpg",

@@ -2,13 +2,13 @@ import { prisma } from "@/app/db/db";
 import supabase from "@/app/db/supabaseInstace";
 import { NextRequest } from "next/server";
 import { arrayBuffer } from "stream/consumers";
-interface FormDataObject {
+export interface FormDataObject {
     name: string;
     email: string;
     cell: string;
     office: string;
     bio: string;
-    img?: File | null; // Optional file for the 'img' field
+    img?: File | null; 
   }
 export default async function createAgent(req: NextRequest) {
   const data = await req.formData();

@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,17 +5,41 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-
 }
 
 model Agent {
-  id Int @id @default(autoincrement())
-  name String
-  bio String
-  src String @unique
-  cell String
+  id     Int    @id @default(autoincrement())
+  bio    String
+  cell   String
+  email  String
+  name   String
   office String
-  email String
-  
+  src    String
+}
 
+model chat_room {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
+  members      String[]
+  member_names String[]
+  messages     message[]
+}
+
+
+model message {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
+  text         String?
+  is_edited    Boolean?  @default(false)
+  sent_by      String?
+  chat_room_id String    @db.Uuid
+  imgURL       String
+  chat_room    chat_room @relation(fields: [chat_room_id], references: [id])
+}
+
+model user_chat_room {
+  id         BigInt   @id(map: "userChatRooms_pkey") @default(autoincrement())
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  user_id    String?
+  chat_id    String?  @db.Uuid
 }

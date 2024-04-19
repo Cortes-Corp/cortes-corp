@@ -2,7 +2,7 @@ import { prisma } from "@/app/db/db";
 import supabase from "@/app/db/supabaseInstace";
 import { NextRequest } from "next/server";
 
-function extractFilePath(url: string) {
+export function extractFilePath(url: string) {
   const parts = url.split("/public/");
   if (parts.length > 1) {
     return parts[1];
