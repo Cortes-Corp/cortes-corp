@@ -1,5 +1,6 @@
-import Sidebar from "../../components/Sidebar";
 
+import Sidebar from "../../components/Sidebar";
+import { usePathname } from "next/navigation";
 export default function DashboardLayout({
   children,
 }: {
@@ -8,7 +9,6 @@ export default function DashboardLayout({
   return (
     <section className="flex h-screen">
       <Sidebar items={sidebarItems}></Sidebar>
-
       <div className="flex-grow flex flex-col">{children}</div>
     </section>
   );

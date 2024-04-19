@@ -5,10 +5,8 @@ export default function ChatLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <Chatbar>{children}</Chatbar>
-      </body>
-    </html>
+    <div>
+      <Chatbar>{children}</Chatbar>
+    </div>
   );
 }

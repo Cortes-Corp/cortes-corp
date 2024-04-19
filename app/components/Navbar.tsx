@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useRouter } from "next/router";
+
 import {
   RegisterLink,
   LoginLink,
@@ -26,6 +27,7 @@ export default function Navbar() {
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
+    { name: "Messages", href: "/chat" },
   ];
   const handleProfileClick = () => {};
 
@@ -35,12 +37,13 @@ export default function Navbar() {
   }
   let isWhite = path !== "/";
 
-  const { user, isAuthenticated, isLoading } = useKindeBrowserClient();
-  console.log(user);
+  const { user, isAuthenticated, isLoading, permissions } =
+    useKindeBrowserClient();
 
   const navScroll = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState<boolean | null>(null);
-
+  
+  console.log("permissions:", permissions);
   const handleScroll = () => {
     if (window.scrollY >= 5) {
       setScrolled(true);
@@ -49,11 +52,8 @@ export default function Navbar() {
     }
   };
 
- 
-
   return (
     <div
-    
       className={`${
         isWhite
           ? "absolute border-b  bg-white"
@@ -102,23 +102,27 @@ export default function Navbar() {
             className="hidden   w-full md:block md:w-auto"
             id="navbar-default">
             <ul className="font-normal items-center flex flex-col p-3 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-              {navLinks.map((link) => (
-                <li key={link.name} className="">
-                  <Link href={link.href}>
-                    <div
-                      className={`block py-0 px-3 transition-all duration-300 ${
-                        (path === "/" && link.name === "Home") ||
-                        path === "/" + link.name.toLowerCase()
-                          ? "text-white"
-                          : "text-white"
-                      } ${(isWhite || scrolled) && "md:text-black"} ${
-                        (!scrolled || isWhite) && "text-gray-100"
-                      } font-light rounded hover:bg-gray-100  md:hover:bg-transparent md:border-0 md:pt-1 pt-1 md:hover:text-red-600   md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}>
-                      {link.name}
-                    </div>
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+              
+                if (link.name === "Messages" && (!isAuthenticated || !permissions.permissions.includes("is:agent"))  ) return;
+                return (
+                  <li key={link.name} className="">
+                    <Link href={link.href}>
+                      <div
+                        className={`block py-0 px-3 transition-all duration-300 ${
+                          (path === "/" && link.name === "Home") ||
+                          path === "/" + link.name.toLowerCase()
+                            ? "text-white"
+                            : "text-white"
+                        } ${(isWhite || scrolled) && "md:text-black"} ${
+                          (!scrolled || isWhite) && "text-gray-100"
+                        } font-light rounded hover:bg-gray-100  md:hover:bg-transparent md:border-0 md:pt-1 pt-1 md:hover:text-red-600   md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}>
+                        {link.name}
+                      </div>
+                    </Link>
+                  </li>
+                );
+              })}
               {!isAuthenticated && !isLoading && (
                 <LoginLink className="text-white bg-red-600 hover:bg-red-700 font-medium  text-sm px-5 py-2.5 focus:outline-none dark:bg-red-600 dark:hover:bg-red-700 focus:ring-2 focus:ring-red-600 dark:focus:ring-red-700 self-center transition-all duration-300">
                   Sign in

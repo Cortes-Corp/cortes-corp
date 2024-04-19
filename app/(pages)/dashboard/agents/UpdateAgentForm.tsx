@@ -21,6 +21,8 @@ interface FormData {
   bio: string;
   img: File | null;
 }
+
+
 interface Props {
   agent: Agent;
 
@@ -45,7 +47,8 @@ export default function updateAgentForm({
   });
   const [isValidated, setIsValidated] = useState(false);
 
-  const { fetchAgents, refetchAgents, setIsLoading, setOpenUpdateForm } = useAgents();
+  const { fetchAgents, refetchAgents, setIsLoading, setOpenUpdateForm } =
+    useAgents();
 
   const formRef = useRef<HTMLFormElement>(null);
   const adjustFormData = (
@@ -67,9 +70,9 @@ export default function updateAgentForm({
       Object.entries(formData).forEach(([key, value]) => {
         data.append(key, value);
       });
-        data.append("id", agent.id.toString());
-        console.log("old agent: ", agent.src)
-        data.append("oldSrc", agent.src)
+      data.append("id", agent.id.toString());
+      console.log("old agent: ", agent.src);
+      data.append("oldSrc", agent.src);
       const res = await fetch("/api/agent", {
         method: "PUT",
         body: data,
@@ -84,8 +87,9 @@ export default function updateAgentForm({
         bio: "",
         img: null,
       }));
-        setOpenUpdateForm(false)
+      setOpenUpdateForm(false);
       setIsLoading(false);
+
     } catch (err) {
       console.error(err);
       setIsLoading(false);
@@ -96,7 +100,6 @@ export default function updateAgentForm({
       setIsValidated((isValidated) => !isValidated);
     }
   }, [formData]);
-
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="w-fit">
@@ -269,3 +272,5 @@ export default function updateAgentForm({
     </Dialog>
   );
 }
+
+

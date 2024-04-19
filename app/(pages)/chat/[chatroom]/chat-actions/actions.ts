@@ -1,11 +1,9 @@
 "use server";
-
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/app/db/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-export const createMessage = async (
-  text: string,
-  roomID: string,
-) => {
+import { createKindeManagementAPIClient } from "@kinde-oss/kinde-auth-nextjs/server";
+export const createMessage = async (text: string, roomID: string) => {
   try {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
@@ -22,6 +20,7 @@ export const createMessage = async (
         chat_room_id: roomID,
       },
     });
+    revalidatePath(`/chat`);
     return message;
   } catch (err) {
     console.error("err: unable to save message", err);
@@ -29,4 +28,55 @@ export const createMessage = async (
       error: err,
     };
   }
+};
+
+
+export const getMessages = async (roomID: string) => {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user) return { error: "unauthorized" };
+  try {
+    const messages = await prisma.message.findMany({
+      where: {
+        chat_room_id: roomID,
+      },
+    });
+    messages.sort((a, b) => a.created_at.getTime() - b.created_at.getTime());
+    return messages;
+  } catch (err) {
+    console.error(err);
+    return {
+      error: err,
+    };
+  }
+};
+
+export const getRooms = async () => {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  if (!user) return { error: "unauthorized" };
+  try {
+    const rooms = await prisma.chat_room.findMany({
+      where: {
+        members: {
+          has: user.id,
+        },
+      },
+    });
+    console.log(rooms);
+    return rooms;
+  } catch (err) {
+    return { error: err };
+  }
+};
+
+export const getUsers = async () => {
+  const apiClient = await createKindeManagementAPIClient();
+  const users = await apiClient.usersApi.getUsers();
+  if (users) {
+    console.log("users:" ,users.users)
+    return users.users;
+  }
+  return { error: "unable to get users" };
 };
