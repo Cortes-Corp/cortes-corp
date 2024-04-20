@@ -86,12 +86,12 @@ export default function Home() {
 
       
 
-      <div className="w-[90%] m-auto mt-[8rem] md:w-[80%] lg:w-[80%]">
+      <div className="w-[90%] m-auto mt-[5rem] md:w-[80%] lg:w-[80%]">
         <div className="flex  justify-between">
         <div className="w-[35rem] h-[30rem] relative">
             <Image
               quality={100}
-              src="/dream-home.jpg"
+              src="/buyImage.jpeg"
               layout="fill"
               objectFit="cover"
               alt="agent"
@@ -115,7 +115,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[90%] m-auto mt-[8rem]  md:w-[80%] lg:w-[80%]">
+      <div className="w-[90%] m-auto mt-[5rem]  md:w-[80%] lg:w-[80%]">
         <div className="flex  justify-between">
           
           <div className="w-[40%] lg:pt-[7rem]">
@@ -152,9 +152,9 @@ export default function Home() {
 
 
 
-      <div className="w-[90%] m-auto mt-[8rem] md:w-[80%] lg:w-[80%]">
-        <div className="flex  justify-between">
-          <div className="w-[35rem] h-[30rem] relative">
+      <div className="w-[90%]  m-auto mt-[5rem] md:w-[80%] lg:w-[80%]">
+        <div className="flex flex-wrap lg:flex-no-wrap    justify-between">
+          <div className="w-[35rem]  h-[30rem] relative">
             <Image
               quality={100}
               src="/agent-photo.jpg"
@@ -163,7 +163,7 @@ export default function Home() {
               alt="agent"
             ></Image>
           </div>
-          <div className="w-[40%] lg:pt-[7rem]">
+          <div className="w-[80%] lg:w-[40%] lg:pt-[7rem]">
             <h1 className="text-[2.6rem] pb-5 font-[500] text-gray-800">
               Agents You Can Trust
             </h1>
@@ -182,6 +182,9 @@ export default function Home() {
       </div>
 
       <div className=" h-[70vh] mt-20  w-[100vw]  relative">
+        <div>
+          
+        </div>
         <div className=" z-[54] bg-white top-[0rem]    shadow-lg w-[50%]  h-[90%]  0 text-center inset-0 m-auto absolute">
           <h1 className=" el  w-full  text-[10rem] text-gray-500">“</h1>
           <h1 className="w-[80%] text-[1.2rem] font-thin m-auto text-gray-500 ">
@@ -194,7 +197,8 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="z-[20] w-full h-full bg-opacity-85 bg-white backdrop-blur-sm absolute"></div>
+        <div className="z-[20] w-full h-full bg-opacity-20 bg-white  backdrop-blur-sm absolute"></div>
+        <div className="z-[20] w-full h-full bg-opacity-85 white-fade  absolute"></div>
         <div
           style={{ filter: "brightness(300%)  contrast(90%) grayscale(100%)" }}
           className="w-full h-full"

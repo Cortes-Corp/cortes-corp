@@ -14,7 +14,7 @@ interface listingCard1Props {
 
 function ListingCard1({ house }: listingCard1Props) {
   return (
-    <div className="w-[95%] aspect-[3.4/2.5] cursor-pointer hover:border-red-500 hover:border-[0.15rem] hover:shadow-2xl transition-all duration-200 border-[0.15rem] border-transparent relative overflow-hidden">
+    <div className="w-[100%] aspect-[3.4/2.5] cursor-pointer hover:shadow-2xl transition-all duration-200  relative overflow-hidden">
   <div className="z-9">
     <Image
       alt="house listing"
