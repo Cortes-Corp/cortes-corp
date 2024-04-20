@@ -1,7 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/api/auth/[kindeAuth]/route": "app/api/auth/[kindeAuth]/route.js",
-  "/(pages)/(home)/page": "app/(pages)/(home)/page.js",
-  "/(pages)/chat/[chatroom]/page": "app/(pages)/chat/[chatroom]/page.js",
-  "/(pages)/chat/page": "app/(pages)/chat/page.js"
+  "/(pages)/(home)/page": "app/(pages)/(home)/page.js"
 }

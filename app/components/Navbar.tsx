@@ -28,6 +28,7 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
     { name: "Messages", href: "/chat" },
+    {name: "Dashboard", href: "/dashboard/analytics"}
   ];
   const handleProfileClick = () => {};
 
