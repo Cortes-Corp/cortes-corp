@@ -8,16 +8,19 @@ export default function Sidebar({ items }: any) {
   return (
     <div>
       <nav className="bg-red-600 h-screen p-5 w-[260px]">
-       <p className="text-2xl mb-6 text-white">Cortes Corp</p>
+        <Link href="/">
+          <p className="text-2xl mb-6 text-white">Cortes Corp</p>
+        </Link>
+      
     
         <h2 className="text-gray-200 mb-2">MAIN MENU</h2>
         <ul className="flex flex-col gap-5">
           {items.map((item: any) => {
             const includes = path
               .toLowerCase()
-              .includes(item.title.toLowerCase());
+              .includes(item.link);
             return (
-              <Link href={`/dashboard/${item.title}`}>
+              <Link href={`/dashboard/${item.link}`}>
                 <li
                   className={`flex transition-all  gap-2 items-center ${
                     includes
