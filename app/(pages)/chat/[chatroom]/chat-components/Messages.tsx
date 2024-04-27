@@ -3,8 +3,9 @@ import { MutableRefObject } from "react";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 import { Avatar, AvatarImage } from "@/app/components/ui/avatar";
 import { useEffect, useState, useRef } from "react";
+import { useRooms } from "@/app/state/useChats";
 import supabase from "@/app/db/supabaseInstace";
-import { getMessages } from "../chat-actions/actions";
+import { getMessages, getRooms } from "../chat-actions/actions";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 export type Message = {
   id: string;
@@ -23,7 +24,7 @@ export default function Messages({ chatRoom }: Props) {
   const chatRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>();
   const [fetchMessages, setFetchMessages] = useState(false);
-
+  const { refetchRoom, setRefetchRoom } = useRooms();
   useEffect(() => {
     const getRoomMessages = async () => {
       const res = await getMessages(chatRoom);
@@ -31,6 +32,7 @@ export default function Messages({ chatRoom }: Props) {
         console.error("unable to get messages");
         throw new Error("unable to get messages");
       }
+      const rooms = await getRooms();
 
       setMessages(res);
     };
@@ -55,8 +57,8 @@ export default function Messages({ chatRoom }: Props) {
         },
 
         (payload) => {
-        
           setFetchMessages((fetchMessages) => !fetchMessages);
+          setRefetchRoom(!refetchRoom)
         }
       )
       .subscribe();

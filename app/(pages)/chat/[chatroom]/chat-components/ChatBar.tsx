@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Search } from "lucide-react";
+import supabase from "@/app/db/supabaseInstace";
 import {
   Bell,
   Home,
@@ -8,7 +9,7 @@ import {
   Banknote,
   PieChart,
   Landmark,
-  UserPlus,
+
 } from "lucide-react";
 import { chat_room } from "@prisma/client";
 import { BadgePlus } from "lucide-react";
@@ -51,13 +52,12 @@ import {
   AlertDialogTrigger,
 } from "@/app/components/ui/alert-dialog";
 import { useState, useEffect, ReactNode } from "react";
-import ClipLoader from "react-spinners/ClipLoader";
+
 import { usePathname } from "next/navigation";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { createNewRoom, getRooms, getUsers } from "../chat-actions/actions";
-import { revalidatePath } from "next/cache";
+import { useRooms } from "@/app/state/useChats";
 import { useRouter } from "next/navigation";
-import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 
 type UserProfile = {
   createdOn: string;
@@ -78,9 +78,10 @@ export default function Chatbar({ children }: { children: ReactNode }) {
   const [chatterID, setChatterId] = useState("");
   const [filteredUsers, setFilteredUsers] = useState<UserProfile[]>([]);
   const [isSelected, setisSelected] = useState(false);
+
+  const { refetchRoom} = useRooms();
   const router = useRouter();
   const path = usePathname();
-
 
   const { user } = useKindeBrowserClient();
 
@@ -88,6 +89,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     if (!users) return;
     setFilteredUsers(users);
   }, [users]);
+
   useEffect(() => {
     const fetchRooms = async () => {
       const res = await getRooms();
@@ -101,7 +103,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
       }
     };
     fetchRooms();
-  }, []);
+  }, [refetchRoom]);
   useEffect(() => {
     if (!rooms) return;
 
@@ -143,6 +145,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
       path: `/chat/${room.id}`,
     };
   });
+
 
   const handleCreateChat = () => {
     if (
