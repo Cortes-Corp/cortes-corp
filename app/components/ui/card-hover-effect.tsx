@@ -2,7 +2,7 @@
 import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 export const HoverEffect = ({
   items,
@@ -10,7 +10,7 @@ export const HoverEffect = ({
 }: {
   items: {
     title: string;
-    description: string;
+    description: ReactNode;
     link: string;
   }[];
   className?: string;
@@ -50,9 +50,12 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
+          <Card className="flex  justify-center">
+            <div className="flex flex-col gap-5">
+               <CardTitle className="text-lg">{item.title}</CardTitle>
+            <CardDescription className="flex items-center justify-center">{item.description}</CardDescription>
+            </div>
+           
           </Card>
         </Link>
       ))}

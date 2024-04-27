@@ -80,3 +80,8 @@ export const getUsers = async () => {
   }
   return { error: "unable to get users" };
 };
+
+
+export const createNewChat = async (userId: string, othersID: string) => {
+  
+}

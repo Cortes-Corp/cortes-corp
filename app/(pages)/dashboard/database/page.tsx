@@ -5,13 +5,13 @@ import { PinContainer } from "@/app/components/ui/3d-pin";
  
 export default function AnimatedPinDemo() {
   return (
-    <div className="h-[40rem] w-full flex items-center justify-center ">
+    <div className="h-[90vh] w-full flex items-center justify-center ">
       <PinContainer
         title="/supabase.com"
         href="https://twitter.com/mannupaaji"
       >
         <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
-          <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
+          <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-black">
             Supabase DB
           </h3>
           <div className="text-base !m-0 !p-0 font-normal">

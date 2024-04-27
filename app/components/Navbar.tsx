@@ -105,7 +105,7 @@ export default function Navbar() {
             <ul className="font-normal items-center flex flex-col p-3 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               {navLinks.map((link) => {
               
-                if (link.name === "Messages" && (!isAuthenticated || !permissions.permissions.includes("is:agent"))  ) return;
+                if ((link.name === "Messages" || link.name === "Dashboard") && (!isAuthenticated || !permissions.permissions.includes("is:agent")) ) return;
                 return (
                   <li key={link.name} className="">
                     <Link href={link.href}>
