@@ -54,7 +54,7 @@ import { useState, useEffect, ReactNode } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { usePathname } from "next/navigation";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
-import { createNewChat, getRooms, getUsers } from "../chat-actions/actions";
+import { createNewRoom, getRooms, getUsers } from "../chat-actions/actions";
 import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
@@ -80,7 +80,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
   const [isSelected, setisSelected] = useState(false);
   const router = useRouter();
   const path = usePathname();
-  console.log(path);
+
 
   const { user } = useKindeBrowserClient();
 
@@ -97,7 +97,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
       } else {
         console.log(res);
         setRooms(res);
-        console.log(res[0].member_names);
+        
       }
     };
     fetchRooms();
@@ -117,7 +117,6 @@ export default function Chatbar({ children }: { children: ReactNode }) {
         console.error("error", res);
         return;
       } else {
-        console.log("hello", res);
         setUsers(res as UserProfile[]);
       }
     };
@@ -132,7 +131,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     });
     setFilteredUsers(filtered ?? []);
   }, [formData]);
-  console.log("users:", users);
+ 
   const chatbarItems = rooms?.map((room) => {
     const otherPerson = room.members.filter((member) => member !== user?.id)[0];
     const otherPersonsInfo = users?.find((user) => user.id === otherPerson);
@@ -149,7 +148,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     if (
       !users?.find((user) => {
         const [first, last] = formData.split(" ");
-        console.log(user)
+
         return (
           user.firstName.toLowerCase() === first.toLowerCase() &&
           user.lastName.toLowerCase() === last.toLowerCase() &&
@@ -159,7 +158,8 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     ) {
       alert("Could not find User");
     } else {
-      createNewChat(user?.id!, chatterID)
+      const newRoom = createNewRoom(user?.id!, chatterID)
+      console.log(newRoom)
     }
   };
 
@@ -318,24 +318,20 @@ export default function Chatbar({ children }: { children: ReactNode }) {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
-            <Link href="/" className="flex items-center gap-2 font-semibold">
+            <Link href="/" className="flex items-center  font-semibold">
               <p className="text-2xl  text-black">Cortes Corp</p>
             </Link>
               <nav className="grid gap-2 text-lg font-medium">
-                <Link
-                  href="#"
-                  className="flex items-center gap-2 text-lg font-semibold">
-                  <p className="text-2xl  text-white">Cortes Corp</p>
-                </Link>
+                
+                
                 <Dialog>
                 <DialogTrigger asChild>
-                  <button className="bg-red-500 items-center gap-2 flex p-2 w-fit text-white rounded-md">
+                  <button className="bg-red-500 items-center gap-2 text-sm mb-4 flex p-2 w-fit text-white rounded-md">
                     <BadgePlus></BadgePlus>
-
                     <p>Create new message</p>
                   </button>
                 </DialogTrigger>
-                <DialogContent className=" w-[23rem] h-[15rem] sm:max-w-[425px]">
+                <DialogContent className=" rounded-md w-[23rem] h-[15rem] sm:max-w-[425px]">
                   <DialogHeader>
                     <DialogTitle>Create new chat</DialogTitle>
                     <DialogDescription>

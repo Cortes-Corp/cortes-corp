@@ -82,6 +82,16 @@ export const getUsers = async () => {
 };
 
 
-export const createNewChat = async (userId: string, othersID: string) => {
+export const createNewRoom = async (userId: string, othersID: string) => {
+  try {
+    const chatRoom = await prisma.chat_room.create({
+    data: {
+      members: [userId, othersID]
+    }
+  })
+  return chatRoom
+  } catch (err) {
+    alert(err)
+  }
   
 }

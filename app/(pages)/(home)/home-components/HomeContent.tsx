@@ -11,7 +11,7 @@ export default function HomeContent() {
   return (
     <div>
       <div  className="w-[90%] m-auto mt-[5rem] md:w-[80%] lg:w-[80%]">
-        <div data-aos="flip-right" className="flex  justify-between">
+        <div data-aos="fade-in" className="flex  justify-between">
           <div className="w-[35rem] h-[30rem] relative">
             <Image
               quality={100}
@@ -37,7 +37,7 @@ export default function HomeContent() {
         </div>
       </div>
 
-      <div data-aos="flip-left" className="w-[90%] m-auto mt-[5rem]  md:w-[80%] lg:w-[80%]">
+      <div data-aos="fade-in" className="w-[90%] m-auto mt-[5rem]  md:w-[80%] lg:w-[80%]">
         <div className="flex  justify-between">
           <div className="w-[40%] lg:pt-[7rem]">
             <h1 className="text-[2.6rem] pb-5 font-[500] text-gray-800">
@@ -66,7 +66,7 @@ export default function HomeContent() {
         </div>
       </div>
 
-      <div data-aos="flip-right" className="w-[90%]  m-auto mt-[5rem] md:w-[80%] lg:w-[80%]">
+      <div data-aos="fade-in" className="w-[90%]  m-auto mt-[5rem] md:w-[80%] lg:w-[80%]">
         <div className="flex flex-wrap lg:flex-no-wrap    justify-between">
           <div className="w-[35rem]  h-[30rem] relative">
             <Image
@@ -94,7 +94,7 @@ export default function HomeContent() {
         </div>
       </div>
 
-      <div data-aos="" className=" h-[70vh] mt-20  w-[100vw]  relative">
+      <div data-aos="fade-in" className=" h-[70vh] mt-20  w-[100vw]  relative">
         <div></div>
         <div className=" z-[54] bg-white top-[0rem]    shadow-lg w-[50%]  h-[90%]  0 text-center inset-0 m-auto absolute">
           <h1 className=" el  w-full  text-[10rem] text-gray-500">“</h1>
