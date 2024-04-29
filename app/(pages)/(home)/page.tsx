@@ -6,6 +6,8 @@ import HomeCards from "../../components/HomeCards";
 import UnderCarousel from "../../components/UnderCarousel";
 import ListingCard1, { houseCardObj } from "../../components/ui/ListingCard1";
 import SlideText from "../../components/SlideText";
+import FeaturedHouses from "./home-components/FeaturedHouses";
+import HomeContent from "./home-components/HomeContent";
 const houses = [
   {
     src: "https://www.chicagomag.com/wp-content/uploads/2022/08/C202209-312-Bauer-Mansion-exterior.jpg",
@@ -73,16 +75,10 @@ export default function Home() {
         <ListingCarousel />
       </div>
 
-      <div className="w-[90%] md:w-[80%] lg:w-[75%]   pt-20  m-auto">
-        <h1 className="text-[1.7rem]    pb-10">Featured Listings</h1>
-        <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {houses.map((house) => (
-            <div className="relative ">
-              <ListingCard1 house={house} />
-            </div>
-          ))}
-        </div>
-      </div>
+      <FeaturedHouses></FeaturedHouses>
+
+      <HomeContent></HomeContent>
+
     </div>
   );
 }

@@ -10,10 +10,14 @@ interface AgentStore {
   setAgents: (newAgents: Array<Agent>) => void;
   refetchAgents: () => Promise<void>;
   fetchAgents: () => Promise<void>;
+  isActive: boolean;
+  setIsActive: (bool: boolean) => void
 }
 export const useAgents = create<AgentStore>((set, get) => ({
   agents: null,
   isLoading: false,
+  isActive: false,
+  setIsActive: (bool) => (set({isActive: bool})),
   openUpdateForm: false,
   setOpenUpdateForm: (bool) => (set({openUpdateForm: bool})),
   setIsLoading: (bool: boolean) => set({ isLoading: bool }),

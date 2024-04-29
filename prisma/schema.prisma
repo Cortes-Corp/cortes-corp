@@ -20,8 +20,8 @@ model Agent {
 model chat_room {
   id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   created_at   DateTime  @default(now()) @db.Timestamptz(6)
+    last_commented_at DateTime? @default(now()) @db.Timestamptz(6)
   members      String[]
-  member_names String[]
   messages     message[]
 }
 
@@ -37,9 +37,12 @@ model message {
   chat_room    chat_room @relation(fields: [chat_room_id], references: [id])
 }
 
-model user_chat_room {
-  id         BigInt   @id(map: "userChatRooms_pkey") @default(autoincrement())
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  user_id    String?
-  chat_id    String?  @db.Uuid
+model contact_request {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
+  name String
+  email String
+  phone_number String
+  subject String
+  message String
 }

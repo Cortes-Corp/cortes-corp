@@ -20,6 +20,14 @@ export const createMessage = async (text: string, roomID: string) => {
         chat_room_id: roomID,
       },
     });
+    const chatRoom = await prisma.chat_room.update({
+      where: {
+        id: roomID,
+      },
+      data: {
+        last_commented_at: new Date(),
+      },
+    });
     revalidatePath(`/chat`);
     return message;
   } catch (err) {
@@ -29,7 +37,6 @@ export const createMessage = async (text: string, roomID: string) => {
     };
   }
 };
-
 
 export const getMessages = async (roomID: string) => {
   const { getUser } = getKindeServerSession();
@@ -63,6 +70,9 @@ export const getRooms = async () => {
           has: user.id,
         },
       },
+      orderBy: {
+        last_commented_at: "desc",
+      },
     });
     console.log(rooms);
     return rooms;
@@ -75,8 +85,21 @@ export const getUsers = async () => {
   const apiClient = await createKindeManagementAPIClient();
   const users = await apiClient.usersApi.getUsers();
   if (users) {
-    console.log("users:" ,users.users)
+    console.log("users:", users.users);
     return users.users;
   }
   return { error: "unable to get users" };
+};
+
+export const createNewRoom = async (userId: string, othersID: string) => {
+  try {
+    const chatRoom = await prisma.chat_room.create({
+      data: {
+        members: [userId, othersID],
+      },
+    });
+    return chatRoom;
+  } catch (err) {
+    alert(err);
+  }
 };

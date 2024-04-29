@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useRouter } from "next/router";
-
+import { getRooms } from "../(pages)/chat/[chatroom]/chat-actions/actions";
 import {
   RegisterLink,
   LoginLink,
@@ -28,6 +28,7 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
     { name: "Messages", href: "/chat" },
+    {name: "Dashboard", href: "/dashboard/analytics"}
   ];
   const handleProfileClick = () => {};
 
@@ -42,6 +43,8 @@ export default function Navbar() {
 
   const navScroll = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState<boolean | null>(null);
+  //if the client doesnt have messages yet, I wont show the messages option on the navbar;
+  const [hasMessages, setHasMessages] = useState(false) 
   
   console.log("permissions:", permissions);
   const handleScroll = () => {
@@ -51,6 +54,18 @@ export default function Navbar() {
       setScrolled(false);
     }
   };
+  useEffect(() => {
+    const checkIfHasMessages = async () => {
+      const rooms = await getRooms();
+      console.log("rooms: ", rooms)
+      if (!Array.isArray(rooms) || !rooms.length) {
+        setHasMessages(false);
+      } else {
+        setHasMessages(true);
+      }
+    }
+    checkIfHasMessages();
+  },[])
 
   return (
     <div
@@ -104,7 +119,9 @@ export default function Navbar() {
             <ul className="font-normal items-center flex flex-col p-3 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               {navLinks.map((link) => {
               
-                if (link.name === "Messages" && (!isAuthenticated || !permissions.permissions.includes("is:agent"))  ) return;
+                if (( link.name === "Dashboard") && (!isAuthenticated || !permissions.permissions.includes("is:agent"))) return;
+                if ((link.name === "Messages") && (!isAuthenticated || !hasMessages || !permissions.permissions.includes("is:agent"))) return;
+                
                 return (
                   <li key={link.name} className="">
                     <Link href={link.href}>
