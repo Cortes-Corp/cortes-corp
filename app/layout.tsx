@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { usePathname } from "next/navigation";
+import { Toaster } from "sonner";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 
@@ -17,8 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
       
-
+        <Navbar />
         {children}
+        <Toaster />
       </body>
     </html>
   );

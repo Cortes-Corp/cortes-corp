@@ -36,3 +36,13 @@ model message {
   imgURL       String
   chat_room    chat_room @relation(fields: [chat_room_id], references: [id])
 }
+
+model contact_request {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
+  name String
+  email String
+  phone_number String
+  subject String
+  message String
+}
