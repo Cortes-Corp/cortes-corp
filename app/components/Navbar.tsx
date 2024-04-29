@@ -69,11 +69,12 @@ export default function Navbar() {
 
   return (
     <div
+      
       className={`${
         isWhite
-          ? "absolute border-b  bg-white"
-          : `absolute   ${scrolled && " bg-white  "}  `
-      }  z-[600] w-full    top-0`}>
+          ? "absolute border-b  bg-white "
+          : `sticky ${!scrolled && 'jump'}   ${scrolled && " bg-white "}  `
+      }  z-[600] w-[97%] m-auto   top-0`}>
       <nav
         className={
           "bg-transparent mx-5   border-b-gray-200  duration-300  p-2 md:p-0"
@@ -126,7 +127,7 @@ export default function Navbar() {
                   <li key={link.name} className="">
                     <Link href={link.href}>
                       <div
-                        className={`block py-0 px-3 transition-all duration-300 ${
+                        className={`block py-0 px-3  ${
                           (path === "/" && link.name === "Home") ||
                           path === "/" + link.name.toLowerCase()
                             ? "text-white"
@@ -141,7 +142,7 @@ export default function Navbar() {
                 );
               })}
               {!isAuthenticated && !isLoading && (
-                <LoginLink className="text-white bg-red-600 hover:bg-red-700 font-medium  text-sm px-5 py-2.5 focus:outline-none dark:bg-red-600 dark:hover:bg-red-700 focus:ring-2 focus:ring-red-600 dark:focus:ring-red-700 self-center transition-all duration-300">
+                <LoginLink className="text-white rounded-md bg-red-600 hover:bg-red-700 font-medium  text-sm px-5 py-2.5 focus:outline-none dark:bg-red-600 dark:hover:bg-red-700 focus:ring-2 focus:ring-red-600 dark:focus:ring-red-700 self-center transition-all duration-300">
                   Sign in
                 </LoginLink>
               )}

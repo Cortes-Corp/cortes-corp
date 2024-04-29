@@ -1,17 +1,20 @@
 export default function ListingSearchBar() {
   return (
-    <div className=" px-10  ">
-      <form className="max-w-lg  mx-auto">
+    <div className="   ">
+      
+        
+      <form className=" w-[60rem] bottom-[-2rem]  inset-x-0  absolute mx-auto  ">
+      <div className='w-[10rem] rounded-md  h-[2.5rem] bg-red-600 text-center text-white flex '><p className="text-center my-auto w-full ">Search</p></div>
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
           Search
         </label>
-        <div className="relative">
+        <div className="relative ">
 
-          <button type='submit' className=" cursor-pointer absolute bg-red-600 px-7 hover:bg-red-700 transition-all duration-300  inset-y-0 end-0 flex items-center  ">
+          <button type='submit'  className=" rounded-lg cursor-pointer absolute bg-red-600 px-7 hover:bg-red-700 transition-all duration-300  inset-y-0 end-0 flex items-center  ">
             <svg
-              className="w-4 h-4 text-white "
+              className="w-4 h-4  text-white "
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -28,8 +31,8 @@ export default function ListingSearchBar() {
           <input
             type="search"
             id="default-search"
-            className="block text-[1rem] w-full py-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-red-600 focus:border-red-600  dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600"
-            placeholder="Search City, County, or ZIP Code"
+            className="block rounded-lg text-[1rem] w-full py-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-red-600 focus:border-red-600  dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600"
+            placeholder="City, County, or ZIP Code"
             required
           />
           {/* <button
@@ -39,6 +42,6 @@ export default function ListingSearchBar() {
           </button> */}
         </div>
       </form>
-    </div>
+      </div>
   );
 }

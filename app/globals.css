@@ -6,6 +6,14 @@
 html {
   font-family: "Libre Franklin", sans-serif;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, Opera */
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* for Internet Explorer and Edge */
+  scrollbar-width: none; /* for Firefox */
+}
 @layer base {
   :root {
     
@@ -111,4 +119,23 @@ background-position: center center;
 }
 
 
+.jump {
+  /* Your existing navbar styles */
 
+    /* Set a background with a linear-gradient to create the vignette effect */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.50), /* Darker at the edges */
+        rgba(0, 0, 0, 0.50),
+        rgba(0, 0, 0, 0.40),
+        rgba(0, 0, 0, 0.30),
+         /* Slightly lighter towards the center */
+        rgba(0, 0, 0, 0) /* And darker again at the opposite edge */
+    );
+
+    /* Shadow styles */
+
+
+    /* Additional styles for a smooth look */
+
+}

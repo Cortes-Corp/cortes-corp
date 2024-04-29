@@ -10,7 +10,7 @@ import {
 export default function ListingCarousel() {
   const carouselItems = [
     {
-      src: "https://i.pinimg.com/originals/6a/5e/6d/6a5e6d3d41999e4e3e150123cb0fbbe2.jpg",
+      src: "/home7.jpg",
       alt: "Image description 1",
     },
     {
@@ -23,7 +23,7 @@ export default function ListingCarousel() {
     },
   ];
   return (
-    <div className="flex justify-center   items-center  ">
+    <div className="flex  relative justify-center  w-[90%] m-auto   items-center  ">
       
       <Carousel
         className=""
@@ -34,9 +34,9 @@ export default function ListingCarousel() {
         <CarouselContent>
           {carouselItems.map((item) => (
             <CarouselItem key={item.src} className="">
-            <div className="top-black    absolute w-full h-full"></div>
+            {/* <div className="top-black    absolute w-full h-full"></div> */}
             <img
-              className="object-cover w-full h-[30rem] sm:h-[30rem] md:h-[35rem] 2xl:h-[50rem]"
+              className="object-cover rounded-xl w-full h-[30rem] sm:h-[30rem] md:h-[38rem] 2xl:h-[50rem]"
               src={item.src}
               alt={item.alt}
             />

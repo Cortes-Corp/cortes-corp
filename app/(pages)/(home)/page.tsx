@@ -58,27 +58,67 @@ const houses = [
     address: "76 Midwood Drive,\bBridgeport, New York 10987",
   },
 ];
+
+const regions = [
+  {
+    text: "Queens",
+    src: "/queens.jpg",
+  },
+  {
+    text: "Brooklyn",
+    src: "/brooklyn.jpg",
+  },
+  {
+    text: "Suffolk County",
+    src: "/suffolk.jpg",
+  },
+  {
+    text: "Nassau County",
+    src: "/nasu.jpg",
+  },
+];
 const mock =
   "https://squarefootphotography.com/wp-content/uploads/2024/01/9-print-SQFT-0058_-scaled.jpg";
 export default function Home() {
   return (
     <div className="  w-full ">
       {/* <Navbar /> */}
-      <div className="relative   items-center">
-        <div className="absolute flex-col justify-center  top-[12rem]  lg:top-[14rem] left-0 right-0 z-10 p-2 ">
-          <SlideText />
-          <ListingSearchBar />
+
+      <div className=" flex-col justify-center   relative   z-10  ">
+        <ListingCarousel />
+        <ListingSearchBar />
+      </div>
+      <div className="w-[95%] m-auto pt-10">
+      <h1 className="text-[1.7rem] pb-5">
+    Our Regions
+  </h1>
+        <div className="flex gap-5 justify-center ">
+          {regions.map((region: object) => {
+            return (
+              <div className=" rounded-md cursor-pointer  overflow-hidden relative w-[21.5rem] h-[6rem]">
+                <div>
+                <Image
+                className="   transform transition-transform duration-300 origin-center"
+                  src={region.src}
+                  alt="region"
+                  layout="fill"
+                  objectFit="cover"
+                ></Image>
+                <div className="absolute inset-0 bg-black bg-opacity-35"></div>
+                </div>
+                
+                <h2 className='absolute text-white text-center inset-0 top-1/3'>{region.text}</h2>
+                
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      <div className="">
-        <ListingCarousel />
-      </div>
-
       <FeaturedHouses></FeaturedHouses>
+      
 
       <HomeContent></HomeContent>
-
     </div>
   );
 }
