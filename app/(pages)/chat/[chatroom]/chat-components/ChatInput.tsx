@@ -20,6 +20,7 @@ export default function ChatInput({ chatRoom }: Props) {
   return (
     <div className="p-5">
       <Input
+        
         placeholder="send message"
         value={text}
         onChange={(e) => setText(e.target.value)}

@@ -15,11 +15,11 @@ export default function DashboardLayout({
 }
 
 const sidebarItems = [
-  {
-    title: "analytics",
-    link: "analytics",
-    icon: <PieChart></PieChart>,
-  },
+  // {
+  //   title: "analytics",
+  //   link: "analytics",
+  //   icon: <PieChart></PieChart>,
+  // },
   {
     title: "Edit Website",
     link: "edit-website",

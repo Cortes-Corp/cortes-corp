@@ -2,15 +2,7 @@
 import Link from "next/link";
 import { Search } from "lucide-react";
 import supabase from "@/app/db/supabaseInstace";
-import {
-  Bell,
-  Home,
-  Menu,
-  Banknote,
-  PieChart,
-  Landmark,
-
-} from "lucide-react";
+import { Bell, Home, Menu, Banknote, PieChart, Landmark } from "lucide-react";
 import { chat_room } from "@prisma/client";
 import { BadgePlus } from "lucide-react";
 import {
@@ -79,7 +71,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
   const [filteredUsers, setFilteredUsers] = useState<UserProfile[]>([]);
   const [isSelected, setisSelected] = useState(false);
 
-  const { refetchRoom} = useRooms();
+  const { refetchRoom } = useRooms();
   const router = useRouter();
   const path = usePathname();
 
@@ -99,7 +91,6 @@ export default function Chatbar({ children }: { children: ReactNode }) {
       } else {
         console.log(res);
         setRooms(res);
-        
       }
     };
     fetchRooms();
@@ -124,6 +115,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     };
     fetchUsers();
   }, []);
+  console.log(users);
 
   useEffect(() => {
     const filtered = users?.filter((user) => {
@@ -133,7 +125,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     });
     setFilteredUsers(filtered ?? []);
   }, [formData]);
- 
+
   const chatbarItems = rooms?.map((room) => {
     const otherPerson = room.members.filter((member) => member !== user?.id)[0];
     const otherPersonsInfo = users?.find((user) => user.id === otherPerson);
@@ -145,7 +137,6 @@ export default function Chatbar({ children }: { children: ReactNode }) {
       path: `/chat/${room.id}`,
     };
   });
-
 
   const handleCreateChat = () => {
     if (
@@ -161,8 +152,8 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     ) {
       alert("Could not find User");
     } else {
-      const newRoom = createNewRoom(user?.id!, chatterID)
-      console.log(newRoom)
+      const newRoom = createNewRoom(user?.id!, chatterID);
+      console.log(newRoom);
     }
   };
 
@@ -217,63 +208,70 @@ export default function Chatbar({ children }: { children: ReactNode }) {
                           formData !== "" &&
                           !isSelected && (
                             <ul className="absolute  left-0 right-0  mt-1 p-1 z-10 bg-white w-full rounded-md shadow-lg overflow-scroll">
-                              {filteredUsers.map((user) => (
-                                <div className="w-full">
-                                  <AlertDialog>
-                                    <AlertDialogTrigger className="w-full flex flex-col items-center">
-                                      <li
-                                        className="hover:bg-slate-50 flex flex-col items-center justify-center  w-40 cursor-pointer  "
-                                        key={user.id}
-                                        value={user.id}>
-                                        {user.firstName + " " + user.lastName}
-                                      </li>
-                                    </AlertDialogTrigger>
-                                    <AlertDialogContent>
-                                      <AlertDialogHeader>
-                                        <AlertDialogTitle>
-                                          Is this the person you want to chat
-                                          with
-                                        </AlertDialogTitle>
-                                        <AlertDialogDescription>
-                                          <div>
-                                            <p>
-                                              Name:
-                                              {" " +
-                                                user.firstName +
-                                                " " +
-                                                user.lastName}
-                                            </p>
-                                            <p>Email: {"" + user.email}</p>
-                                          </div>
-                                        </AlertDialogDescription>
-                                      </AlertDialogHeader>
-                                      <AlertDialogFooter>
-                                        <AlertDialogCancel>
-                                          No
-                                        </AlertDialogCancel>
-                                        <AlertDialogAction className="bg-red-600 hover:bg-red-700"
-                                          onClick={() => {
-                                            setFormData(
-                                              user.firstName +
-                                                " " +
-                                                user.lastName
-                                            );
-                                            setChatterId(user.id);
-                                            setisSelected(true);
-                                          }}>
-                                          Yes
-                                        </AlertDialogAction>
-                                      </AlertDialogFooter>
-                                    </AlertDialogContent>
-                                  </AlertDialog>{" "}
-                                </div>
-                              ))}
+                            {filteredUsers.map((user_) => {
+                              if (user_.id === user?.id) return;
+                                return (
+                                  <div className="w-full">
+                                    <AlertDialog>
+                                      <AlertDialogTrigger className="w-full flex flex-col items-center">
+                                        <li
+                                          className="hover:bg-slate-50 flex flex-col items-center justify-center  w-40 cursor-pointer  "
+                                          key={user_.id}
+                                          value={user_.id}>
+                                          {user_.firstName + " " + user_.lastName}
+                                        </li>
+                                      </AlertDialogTrigger>
+                                      <AlertDialogContent>
+                                        <AlertDialogHeader>
+                                          <AlertDialogTitle>
+                                            Is this the person you want to chat
+                                            with
+                                          </AlertDialogTitle>
+                                          <AlertDialogDescription>
+                                            <div>
+                                              <p>
+                                                Name:
+                                                {" " +
+                                                  user_.firstName +
+                                                  " " +
+                                                  user_.lastName}
+                                              </p>
+                                              <p>Email: {"" + user_.email}</p>
+                                            </div>
+                                          </AlertDialogDescription>
+                                        </AlertDialogHeader>
+                                        <AlertDialogFooter>
+                                          <AlertDialogCancel>
+                                            No
+                                          </AlertDialogCancel>
+                                          <AlertDialogAction
+                                            className="bg-red-600 hover:bg-red-700"
+                                            onClick={() => {
+                                              setFormData(
+                                                user_.firstName +
+                                                  " " +
+                                                  user_.lastName
+                                              );
+                                              setChatterId(user_.id);
+                                              setisSelected(true);
+                                            }}>
+                                            Yes
+                                          </AlertDialogAction>
+                                        </AlertDialogFooter>
+                                      </AlertDialogContent>
+                                    </AlertDialog>{" "}
+                                  </div>
+                                );
+                              })}
                             </ul>
                           )}
                       </form>
                     </div>
                     <DialogFooter></DialogFooter>
-                    <Button className="bg-red-600 hover:bg-red-700" onClick={handleCreateChat} type="submit">
+                    <Button
+                      className="bg-red-600 hover:bg-red-700"
+                      onClick={handleCreateChat}
+                      type="submit">
                       Create Chat
                     </Button>
                   </div>
@@ -321,109 +319,111 @@ export default function Chatbar({ children }: { children: ReactNode }) {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
-            <Link href="/" className="flex items-center  font-semibold">
-              <p className="text-2xl  text-black">Cortes Corp</p>
-            </Link>
+              <Link href="/" className="flex items-center  font-semibold">
+                <p className="text-2xltext-black">Cortes Corp</p>
+              </Link>
               <nav className="grid gap-2 text-lg font-medium">
-                
-                
                 <Dialog>
-                <DialogTrigger asChild>
-                  <button className="bg-red-500 items-center gap-2 text-sm mb-4 flex p-2 w-fit text-white rounded-md">
-                    <BadgePlus></BadgePlus>
-                    <p>Create new message</p>
-                  </button>
-                </DialogTrigger>
-                <DialogContent className=" rounded-md w-[23rem] h-[15rem] sm:max-w-[425px]">
-                  <DialogHeader>
-                    <DialogTitle>Create new chat</DialogTitle>
-                    <DialogDescription>
-                      Select who you want to chat with
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="flex flex-col items-center">
-                    <div className="relative flex gap-4 py-4">
-                      <form className="">
-                        <div className="flex items-center gap-2">
-                          <Search></Search>
-                          <Input
-                            autoComplete="off"
-                            id="username"
-                            value={formData}
-                            onChange={(e) => {
-                              setFormData(e.target.value);
-                              setisSelected(false);
-                            }}
-                            className="col-span-3 focus:ring-red-600"
-                          />
-                        </div>
+                  <DialogTrigger asChild>
+                    <button className="bg-red-500 items-center gap-2 text-sm mb-4 flex p-2 w-fit text-white rounded-md">
+                      <BadgePlus></BadgePlus>
+                      <p>Create new message</p>
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className=" rounded-md w-[23rem] h-[15rem] sm:max-w-[425px]">
+                    <DialogHeader>
+                      <DialogTitle>Create new chat</DialogTitle>
+                      <DialogDescription>
+                        Select who you want to chat with
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex flex-col items-center">
+                      <div className="relative flex gap-4 py-4">
+                        <form className="">
+                          <div className="flex items-center gap-2">
+                            <Search></Search>
+                            <Input
+                              autoComplete="off"
+                              id="username"
+                              value={formData}
+                              onChange={(e) => {
+                                setFormData(e.target.value);
+                                setisSelected(false);
+                              }}
+                              className="col-span-3 focus:ring-red-600"
+                            />
+                          </div>
 
-                        {filteredUsers?.length > 0 &&
-                          formData !== "" &&
-                          !isSelected && (
-                            <ul className="absolute  left-0 right-0  mt-1 p-1 z-10 bg-white w-full rounded-md shadow-lg overflow-scroll">
-                              {filteredUsers.map((user) => (
-                                <div className="w-full">
-                                  <AlertDialog>
-                                    <AlertDialogTrigger className="w-full flex flex-col items-center">
-                                      <li
-                                        className="hover:bg-slate-50 flex flex-col items-center justify-center  w-40 cursor-pointer  "
-                                        key={user.id}
-                                        value={user.id}>
-                                        {user.firstName + " " + user.lastName}
-                                      </li>
-                                    </AlertDialogTrigger>
-                                    <AlertDialogContent>
-                                      <AlertDialogHeader>
-                                        <AlertDialogTitle>
-                                          Is this the person you want to chat
-                                          with
-                                        </AlertDialogTitle>
-                                        <AlertDialogDescription>
-                                          <div>
-                                            <p>
-                                              Name:
-                                              {" " +
+                          {filteredUsers?.length > 0 &&
+                            formData !== "" &&
+                            !isSelected && (
+                              <ul className="absolute  left-0 right-0  mt-1 p-1 z-10 bg-white w-full rounded-md shadow-lg overflow-scroll">
+                                {filteredUsers.map((user) => (
+                                  <div className="w-full">
+                                    <AlertDialog>
+                                      <AlertDialogTrigger className="w-full flex flex-col items-center">
+                                        <li
+                                          className="hover:bg-slate-50 flex flex-col items-center justify-center  w-40 cursor-pointer  "
+                                          key={user.id}
+                                          value={user.id}>
+                                          {user.firstName + " " + user.lastName}
+                                        </li>
+                                      </AlertDialogTrigger>
+                                      <AlertDialogContent>
+                                        <AlertDialogHeader>
+                                          <AlertDialogTitle>
+                                            Is this the person you want to chat
+                                            with
+                                          </AlertDialogTitle>
+                                          <AlertDialogDescription>
+                                            <div>
+                                              <p>
+                                                Name:
+                                                {" " +
+                                                  user.firstName +
+                                                  " " +
+                                                  user.lastName}
+                                              </p>
+                                              <p>Email: {"" + user.email}</p>
+                                            </div>
+                                          </AlertDialogDescription>
+                                        </AlertDialogHeader>
+                                        <AlertDialogFooter>
+                                          <AlertDialogCancel>
+                                            No
+                                          </AlertDialogCancel>
+                                          <AlertDialogAction
+                                            className="bg-red-600 hover:bg-red-700"
+                                            onClick={() => {
+                                              setFormData(
                                                 user.firstName +
-                                                " " +
-                                                user.lastName}
-                                            </p>
-                                            <p>Email: {"" + user.email}</p>
-                                          </div>
-                                        </AlertDialogDescription>
-                                      </AlertDialogHeader>
-                                      <AlertDialogFooter>
-                                        <AlertDialogCancel>
-                                          No
-                                        </AlertDialogCancel>
-                                        <AlertDialogAction className="bg-red-600 hover:bg-red-700"
-                                          onClick={() => {
-                                            setFormData(
-                                              user.firstName +
-                                                " " +
-                                                user.lastName
-                                            );
-                                            setChatterId(user.id);
-                                            setisSelected(true);
-                                          }}>
-                                          Yes
-                                        </AlertDialogAction>
-                                      </AlertDialogFooter>
-                                    </AlertDialogContent>
-                                  </AlertDialog>{" "}
-                                </div>
-                              ))}
-                            </ul>
-                          )}
-                      </form>
+                                                  " " +
+                                                  user.lastName
+                                              );
+                                              setChatterId(user.id);
+                                              setisSelected(true);
+                                            }}>
+                                            Yes
+                                          </AlertDialogAction>
+                                        </AlertDialogFooter>
+                                      </AlertDialogContent>
+                                    </AlertDialog>{" "}
+                                  </div>
+                                ))}
+                              </ul>
+                            )}
+                        </form>
+                      </div>
+                      <DialogFooter></DialogFooter>
+                      <Button
+                        className="bg-red-600 hover:bg-red-700"
+                        onClick={handleCreateChat}
+                        type="submit">
+                        Create Chat
+                      </Button>
                     </div>
-                    <DialogFooter></DialogFooter>
-                    <Button className="bg-red-600 hover:bg-red-700" onClick={handleCreateChat} type="submit">
-                      Create Chat
-                    </Button>
-                  </div>
-                </DialogContent>
-              </Dialog>
+                  </DialogContent>
+                </Dialog>
 
                 {chatbarItems?.map((item) => {
                   return (

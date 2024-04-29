@@ -7,6 +7,7 @@ import { useRooms } from "@/app/state/useChats";
 import supabase from "@/app/db/supabaseInstace";
 import { getMessages, getRooms } from "../chat-actions/actions";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import ClipLoader from "react-spinners/ClipLoader";
 export type Message = {
   id: string;
   created_at: Date;
@@ -24,24 +25,27 @@ export default function Messages({ chatRoom }: Props) {
   const chatRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>();
   const [fetchMessages, setFetchMessages] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { refetchRoom, setRefetchRoom } = useRooms();
+  
   useEffect(() => {
     const getRoomMessages = async () => {
+    
       const res = await getMessages(chatRoom);
       if (!Array.isArray(res)) {
         console.error("unable to get messages");
         throw new Error("unable to get messages");
       }
       const rooms = await getRooms();
-
       setMessages(res);
+    
     };
     getRoomMessages();
   }, [fetchMessages]);
   useEffect(() => {
     chatRef.current?.scrollTo({
       top: chatRef.current.scrollHeight,
-      behavior: "smooth",
+      
     });
   }, [messages]);
 
@@ -63,6 +67,7 @@ export default function Messages({ chatRoom }: Props) {
       )
       .subscribe();
   }, []);
+ 
   return (
     <div ref={chatRef} className="w-full overflow-y-scroll h-[80vh]">
       {messages &&
