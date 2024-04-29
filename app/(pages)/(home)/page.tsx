@@ -88,11 +88,11 @@ export default function Home() {
         <ListingCarousel />
         <ListingSearchBar />
       </div>
-      <div className="w-[95%] m-auto pt-10">
+      <div className="w-[90%] m-auto pt-10">
       <h1 className="text-[1.7rem] pb-5">
     Our Regions
   </h1>
-        <div className="flex gap-5 justify-center ">
+        <div className="flex  gap-5 justify-center ">
           {regions.map((region: object) => {
             return (
               <div className=" rounded-md cursor-pointer  overflow-hidden relative w-[21.5rem] h-[6rem]">

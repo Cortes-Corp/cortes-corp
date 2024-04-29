@@ -71,7 +71,7 @@ export default function FeaturedHouses() {
    };
  
    return (
-    <div className="w-[100%] mt-20 m-auto">
+    <div className="w-[95%] mt-20 m-auto">
       <h1 className="text-[1.7rem] pb-10 text-center md:text-left md:w-[95%] lg:w-[95%] m-auto">
     Featured Listings
   </h1>
