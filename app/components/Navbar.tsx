@@ -42,18 +42,12 @@ export default function Navbar() {
     useKindeBrowserClient();
 
   const navScroll = useRef<HTMLDivElement>(null);
-  const [scrolled, setScrolled] = useState<boolean | null>(null);
+  const [scrolled, setScrolled] = useState<boolean | null>(true);
   //if the client doesnt have messages yet, I wont show the messages option on the navbar;
   const [hasMessages, setHasMessages] = useState(false) 
   
   console.log("permissions:", permissions);
-  const handleScroll = () => {
-    if (window.scrollY >= 5) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
+ 
   useEffect(() => {
     const checkIfHasMessages = async () => {
       const rooms = await getRooms();
