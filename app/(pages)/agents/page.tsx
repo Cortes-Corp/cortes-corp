@@ -26,7 +26,7 @@ export default function Agents() {
               return (
                 <li
                   key={index}
-                  className={` w-[19rem]  hover:shadow-lg relative py-20 pt-15  bg-white p-5     justify-between   transition-all duration-500   flex-col  gap-20`}>
+                  className={` w-[19rem]  hover:shadow-lg rounded-xl overflow-hidden relative py-20 pt-15  bg-white p-5     justify-between   transition-all duration-500   flex-col  gap-20`}>
                   <div className="absolute translate-y-[-5rem] translate-x-[-1.2rem] bg-red-600 h-[30%] w-full">
                     {" "}
                   </div>
@@ -60,7 +60,7 @@ export default function Agents() {
                       </p>
                     )}
                     <Link href={`/agents/${index}`}>
-                      <button className="bg-red-600 mt-2 font-medium translate-y-[1rem] scale-[1.1] text-white py-[0.4rem] px-4  hover:bg-red-700 transition duration-300">
+                      <button className=" rounded-md bg-red-600 mt-2 font-medium translate-y-[1rem] scale-[1.1] text-white py-[0.4rem] px-4  hover:bg-red-700 transition duration-300">
                         More Info
                       </button>
                     </Link>

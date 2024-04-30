@@ -36,10 +36,11 @@ export default function ListingCarousel() {
             <CarouselItem key={item.src} className="">
             {/* <div className="top-black    absolute w-full h-full"></div> */}
             <img
-              className="object-cover rounded-xl w-full h-[30rem] sm:h-[30rem] md:h-[38rem] 2xl:h-[50rem]"
+              className="object-cover  rounded-xl w-full h-[30rem] sm:h-[30rem] md:h-[38rem] 2xl:h-[50rem]"
               src={item.src}
               alt={item.alt}
             />
+            
           </CarouselItem>
           ))}
         </CarouselContent>

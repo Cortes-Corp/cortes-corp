@@ -15,7 +15,7 @@ interface listingCard1Props {
 function ListingCard1({ house }: listingCard1Props) {
   const [liked, setLiked] = useState<Boolean>(false)
   return (
-    <div className="w-[21.6rem] rounded-md  border-[0.1px]  border-black aspect-[2.5/2.5] cursor-pointer  transition-all duration-200  relative overflow-hidden">
+    <div className="w-[21.6rem] rounded-md  border-[1px]   aspect-[2.5/2.5] cursor-pointer  transition-all duration-200  relative overflow-hidden">
   <div className="z-9 ">
     <Image
       alt="house listing"
