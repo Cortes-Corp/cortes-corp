@@ -38,16 +38,16 @@ function SlideText() {
   }, []);
  
   return (
-    <div className="flex relative gap-3 justify-center">
+    <div className="flex absolute inset-0 m-auto gap-3 top-1/3 justify-center">
       <h1
         style={{ fontFamily: "Merriweather" }}
-        className=" font-bold text-center  text-white pb-5  lg:text-[3rem] md:text-[3rem] sm:text-[2.8rem] text-[2.2rem]"
+        className=" font-bold text-center  text-black pb-5  lg:text-[3rem] md:text-[3rem] sm:text-[2.8rem] text-[2.2rem]"
       >
         Find your
       </h1>
       <span style={{ fontFamily: "Merriweather" }}
         className=" text-white font-bold text-center    pb-5 lg:text-[3rem] md:text-[3rem] sm:text-[2.8rem] text-[2.2rem]  " key={word}  data-aos={ !isFirstRender &&`zoom-out`}>
-        {words[word]}
+        Home
       </span>
     </div>
   );

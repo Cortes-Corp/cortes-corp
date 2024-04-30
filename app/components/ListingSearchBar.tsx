@@ -3,7 +3,7 @@ export default function ListingSearchBar() {
     <div className="   ">
       
         
-      <form className=" w-[60rem] bottom-[-2rem]  inset-x-0  absolute mx-auto  ">
+      <form className=" w-[60rem]  bottom-[-2rem]  inset-x-0  absolute mx-auto  ">
       <div className='w-[10rem] rounded-md  h-[2.5rem] bg-red-600 text-center text-white flex '><p className="text-center my-auto w-full ">Search</p></div>
         <label
           htmlFor="default-search"
@@ -31,7 +31,7 @@ export default function ListingSearchBar() {
           <input
             type="search"
             id="default-search"
-            className="block rounded-lg text-[1rem] w-full py-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-red-600 focus:border-red-600  dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600"
+            className="block rounded-lg text-[1rem] w-full py-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50    "
             placeholder="City, County, or ZIP Code"
             required
           />
