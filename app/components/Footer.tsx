@@ -118,7 +118,7 @@ const Footer = () => {
                 </div>
                 <div className="py-16 flex flex-col justify-center items-center">
                     
-                    <p className="mt-6 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">2021 Tailwind UI Kit. All Rights Reserved.</p>
+                    <p className="mt-6 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">2024 CortesCorp. All Rights Reserved.</p>
                 </div>
             </footer>
         </div>
