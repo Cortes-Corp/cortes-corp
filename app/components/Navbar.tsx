@@ -29,12 +29,12 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
     { name: "Messages", href: "/chat" },
-    {name: "Dashboard", href: "/dashboard/analytics"}
+    { name: "Dashboard", href: "/dashboard/tasks" }
   ];
-  const handleProfileClick = () => {};
+  const handleProfileClick = () => { };
 
   const path = usePathname();
-  if (path.includes("dashboard")) {
+  if (path.includes("dashboard") || path.includes("chat")) {
     return;
   }
   let isWhite = false;

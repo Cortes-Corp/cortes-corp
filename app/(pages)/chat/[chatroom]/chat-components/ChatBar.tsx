@@ -5,6 +5,7 @@ import supabase from "@/app/db/supabaseInstace";
 import { Bell, Home, Menu, Banknote, PieChart, Landmark } from "lucide-react";
 import { chat_room } from "@prisma/client";
 import { BadgePlus } from "lucide-react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
   Avatar,
   AvatarFallback,
@@ -70,8 +71,13 @@ export default function Chatbar({ children }: { children: ReactNode }) {
   const [chatterID, setChatterId] = useState("");
   const [filteredUsers, setFilteredUsers] = useState<UserProfile[]>([]);
   const [isSelected, setisSelected] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const { refetchRoom } = useRooms();
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const { refetchRoom, setRefetchRoom } = useRooms();
   const router = useRouter();
   const path = usePathname();
 
@@ -99,6 +105,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     if (!rooms) return;
 
     if (path === "/chat") {
+      if (!rooms || !rooms.length) return;
       router.push(`/chat/${rooms[0].id}`);
     }
   }, [rooms]);
@@ -138,7 +145,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     };
   });
 
-  const handleCreateChat = () => {
+  const handleCreateChat = async () => {
     if (
       !users?.find((user) => {
         const [first, last] = formData.split(" ");
@@ -152,8 +159,9 @@ export default function Chatbar({ children }: { children: ReactNode }) {
     ) {
       alert("Could not find User");
     } else {
-      const newRoom = createNewRoom(user?.id!, chatterID);
-      console.log(newRoom);
+      const newRoom = await createNewRoom(user?.id!, chatterID);
+      setRefetchRoom(!refetchRoom);
+      setOpen(false);
     }
   };
 
@@ -208,8 +216,8 @@ export default function Chatbar({ children }: { children: ReactNode }) {
                           formData !== "" &&
                           !isSelected && (
                             <ul className="absolute  left-0 right-0  mt-1 p-1 z-10 bg-white w-full rounded-md shadow-lg overflow-scroll">
-                            {filteredUsers.map((user_) => {
-                              if (user_.id === user?.id) return;
+                              {filteredUsers.map((user_) => {
+                                if (user_.id === user?.id) return;
                                 return (
                                   <div className="w-full">
                                     <AlertDialog>
@@ -218,7 +226,9 @@ export default function Chatbar({ children }: { children: ReactNode }) {
                                           className="hover:bg-slate-50 flex flex-col items-center justify-center  w-40 cursor-pointer  "
                                           key={user_.id}
                                           value={user_.id}>
-                                          {user_.firstName + " " + user_.lastName}
+                                          {user_.firstName +
+                                            " " +
+                                            user_.lastName}
                                         </li>
                                       </AlertDialogTrigger>
                                       <AlertDialogContent>
@@ -268,16 +278,23 @@ export default function Chatbar({ children }: { children: ReactNode }) {
                       </form>
                     </div>
                     <DialogFooter></DialogFooter>
-                    <Button
-                      className="bg-red-600 hover:bg-red-700"
-                      onClick={handleCreateChat}
-                      type="submit">
-                      Create Chat
-                    </Button>
+                    <DialogPrimitive.Close>
+                      <Button
+                        className="bg-red-600 hover:bg-red-700"
+                        onClick={handleCreateChat}
+                        type="submit">
+                        Create Chat
+                      </Button>
+                    </DialogPrimitive.Close>
                   </div>
                 </DialogContent>
               </Dialog>
               <p className="p-3 text-md">Messages</p>
+              {!chatbarItems?.length && (
+                <div className="flex items-center justify-center text-lg ">
+                  No Chats yet
+                </div>
+              )}
               {chatbarItems?.map((item) => {
                 return (
                   <Link
@@ -323,7 +340,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
                 <p className="text-2xltext-black">Cortes Corp</p>
               </Link>
               <nav className="grid gap-2 text-lg font-medium">
-                <Dialog>
+                <Dialog open={open} onOpenChange={handleClose}>
                   <DialogTrigger asChild>
                     <button className="bg-red-500 items-center gap-2 text-sm mb-4 flex p-2 w-fit text-white rounded-md">
                       <BadgePlus></BadgePlus>
@@ -400,6 +417,7 @@ export default function Chatbar({ children }: { children: ReactNode }) {
                                                   " " +
                                                   user.lastName
                                               );
+
                                               setChatterId(user.id);
                                               setisSelected(true);
                                             }}>

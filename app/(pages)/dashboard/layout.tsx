@@ -1,5 +1,13 @@
 import Sidebar from "../../components/Sidebar";
-import { PieChart, Briefcase, Database, Settings2, Fingerprint} from "lucide-react";
+import {
+  PieChart,
+  Briefcase,
+  Database,
+  Settings2,
+  Fingerprint,
+  Phone,
+  Clipboard
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 export default function DashboardLayout({
   children,
@@ -18,8 +26,13 @@ const sidebarItems = [
   // {
   //   title: "analytics",
   //   link: "analytics",
-  //   icon: <PieChart></PieChart>,
-  // },
+  //   icon: <PieChart></PieChart>},
+  {
+    title: "tasks",
+link: "/tasks",
+    icon: <Clipboard />,
+  },
+ 
   {
     title: "Edit Website",
     link: "edit-website",
@@ -28,7 +41,7 @@ const sidebarItems = [
   {
     title: "Authentication",
     link: "authentication",
-    icon: <Fingerprint></Fingerprint>
+    icon: <Fingerprint></Fingerprint>,
   },
   {
     title: "database",
