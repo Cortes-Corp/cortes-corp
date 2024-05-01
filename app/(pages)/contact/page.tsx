@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { FormEvent } from "react";
 import { toast } from "sonner";
 import { Button } from "@/app/components/ui/button";
@@ -13,9 +13,9 @@ export default function Contact() {
 
   };
   return (
-    <section className="bg-white mt-20 dark:bg-gray-900">
-      <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-red-600 dark:text-white">
+    <section className="bg-white flex justify-around w-[90%] m-auto   border-t-[0.5rem] border-t-red-500  dark:bg-gray-900">
+      <div className="pt-8  w-[50%] scale-[90%]    px-4  ">
+        <h2 className="mb-0 text-4xl tracking-tight font-extrabold text-center text-red-600 dark:text-white">
           Contact Us
         </h2>
         <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
@@ -116,11 +116,14 @@ export default function Contact() {
                   },
                 });
               }}
-              className="bg-red-600 hover:bg-red-700 p-3 rounded-none  text-white">
+              className="bg-red-600  hover:bg-red-700 p-3 rounded-md  text-white">
               Send Message
             </Button>
           </div>
         </form>
+      </div>
+      <div className="relative my-auto rounded-full overflow-hidden w-[35rem] h-[35rem]">
+        <Image layout='fill' objectFit="cover"  src='/agent-photo.jpg'></Image>
       </div>
     </section>
   );
