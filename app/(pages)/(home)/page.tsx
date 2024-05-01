@@ -8,6 +8,10 @@ import ListingCard1, { houseCardObj } from "../../components/ui/ListingCard1";
 import SlideText from "../../components/SlideText";
 import FeaturedHouses from "./home-components/FeaturedHouses";
 import HomeContent from "./home-components/HomeContent";
+import Testimonials from "@/app/components/Testimonial";
+import Contact from "../contact/page";
+import Contact2 from "@/app/components/Contact";
+import Footer from "@/app/components/Footer";
 const houses = [
   {
     src: "https://www.chicagomag.com/wp-content/uploads/2022/08/C202209-312-Bauer-Mansion-exterior.jpg",
@@ -106,18 +110,20 @@ export default function Home() {
       {/* <Navbar /> */}
 
       <div className=" flex-col justify-center   relative   z-10  ">
-      
+        
         <ListingCarousel />
+        
         <ListingSearchBar />
+
        
       </div>
       
       <div className="w-[90%] m-auto pt-10">
-        <h1 className="text-[1.7rem] pb-5">Our Regions</h1>
+        <h1 className="text-[1.7rem] text-gray-800 font-medium pb-5">Our Regions</h1>
         <div className="flex  gap-5 justify-center ">
           {regions.map((region: object) => {
             return (
-              <div className=" rounded-md cursor-pointer  overflow-hidden relative w-[21.5rem] h-[6rem]">
+              <div className=" shadow-md rounded-md cursor-pointer  overflow-hidden relative w-[21.5rem] h-[6rem]">
                 <div>
                   <Image
                     src={region.src}
@@ -135,11 +141,13 @@ export default function Home() {
             );
           })}
         </div>
+        <h1 className="pt-10 text-[1.5rem] font-semibold text-red-600">Looking Beyond Our Main Regions?</h1>
+        <p className="text-gray-800">We're ready to help anywhere. <span><a className="underline cursor-pointer">Contact us</a></span> to explore more opportunities.</p>
       </div>
 
       <FeaturedHouses></FeaturedHouses>
 
-      <div className="w-[90%] mb-10    justify-center flex   overflow-hidden rounded-xl border-t-[1rem] border-[0.1rem] border-t-red-600 m-auto  h-[29rem] bg-white">
+      <div className="w-[90%] mb-10    justify-center flex shadow-md   overflow-hidden rounded-xl border-t-[1rem] border-[0.1rem] border-t-red-600 m-auto  h-[29rem] bg-white">
         {services.map((service) => {
           return (
             <div className={`flex flex-col  ${service.title !== "SELL YOUR HOME" && 'border-r'} px-[3rem]     items-center`}>
@@ -158,18 +166,28 @@ export default function Home() {
                 </h1>
                 <p className=" text-[0.9rem]  text-center">{service.text}</p>
               </div>
-                <button className=" hover:bg-red-600 rounded-md hover:text-white transition-all duration-300  mb-10 w-[7rem] bg-slate-100 h-[2.5rem] text-[0.8rem]  text-red-600 font-semibold">
+                <button className=" shadow-xs hover:bg-red-600 rounded-md hover:text-white transition-all duration-300  mb-10 w-[7rem] bg-slate-100 h-[2.5rem] text-[0.8rem]  text-red-600 font-semibold">
                   {" "}
                   {service.title === "BUY YOUR HOME" ||
                   service.title === "RENT YOUR HOME"
                     ? "LISTINGS"
                     : "MORE INFO"}
                 </button>
+
             </div>
           );
         })}
+
+        
       </div>
-      {/* <HomeContent></HomeContent> */}
+      <Testimonials />
+      <div className='mt-20'>
+      <Contact />
+      </div>
+
+        
+      
+      <Footer />
     </div>
   );
 }

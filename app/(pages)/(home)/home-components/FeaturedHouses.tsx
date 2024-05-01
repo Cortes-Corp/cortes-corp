@@ -72,7 +72,7 @@ export default function FeaturedHouses() {
  
    return (
     <div className="w-[95%] mt-20 m-auto">
-      <h1 className="text-[1.7rem] pb-10 text-center md:text-left md:w-[95%] lg:w-[95%] m-auto">
+      <h1 className="text-[1.7rem] text-gray-800 font-medium pb-10 text-center md:text-left md:w-[95%] lg:w-[95%] m-auto">
     Featured Listings
   </h1>
       <div className="flex pt-5  justify-center">

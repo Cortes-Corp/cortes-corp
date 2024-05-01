@@ -23,7 +23,7 @@ export default function ListingCarousel() {
     },
   ];
   return (
-    <div className="flex  relative justify-center  w-[90%] m-auto   items-center  ">
+    <div className="flex  shadow-md rounded-xl relative justify-center  w-[90%] m-auto   items-center  ">
       
       <Carousel
         className=""
