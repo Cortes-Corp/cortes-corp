@@ -151,7 +151,7 @@ const Card: React.FC<CardProps> = ({ title, id, column, handleDragStart }) => {
       layout
       layoutId={id}
       draggable="true"
-      onDragStart={(e) => handleDragStart(e, { title, id, column })}
+      onDragStart={(e) => handleDragStart(e , { title, id, column })}
       className="cursor-grab  border rounded-md  bg-red-600  p-3 active:cursor-grabbing">
           <p className="text-sm text-white">{title}</p>
           <Ellipsis></Ellipsis>
