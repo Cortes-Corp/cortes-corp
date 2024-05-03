@@ -1,5 +1,5 @@
 import HamburgerButton from "../edit-website/HamburgerButton";
-import KanbanBoard from "@/app/components/KanbanBoard";
+import KanbanBoard from "@/app/(pages)/dashboard/tasks/task-components/KanbanBoard";
 export default function Tasks() {
   return (
     <div>

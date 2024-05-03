@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import { FiPlus, FiTrash } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { FaFire } from "react-icons/fa";
-
 
 interface Card {
   id: string;
@@ -23,7 +21,7 @@ interface CardProps {
   title: string;
   id: string;
   column: string;
-  handleDragStart: (e: React.DragEvent, card: Card) => void;
+  handleDragStart: (e: any, card: Card) => void;
 }
 
 interface DropIndicatorProps {
@@ -44,7 +42,6 @@ const Board = () => {
 
   return (
     <div className="flex h-full w-full gap-3 overflow-scroll p-12">
-      
       <Column
         title="TODO"
         column="todo"
@@ -80,11 +77,11 @@ const Column: React.FC<ColumnProps> = ({
 }) => {
   const [active, setActive] = useState(false);
 
-  const handleDragStart = (e: React.DragEvent, card: Card) => {
+  const handleDragStart = (e: any, card: Card) => {
     e.dataTransfer.setData("cardId", card.id);
   };
 
-  const handleDragEnd = (e: React.DragEvent) => {
+  const handleDragEnd = (e: any) => {
     const cardId = e.dataTransfer.getData("cardId");
 
     setActive(false);
@@ -109,7 +106,7 @@ const Column: React.FC<ColumnProps> = ({
     setCards(copy);
   };
 
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDragOver = (e: any) => {
     e.preventDefault();
     setActive(true);
   };
@@ -151,10 +148,10 @@ const Card: React.FC<CardProps> = ({ title, id, column, handleDragStart }) => {
       layout
       layoutId={id}
       draggable="true"
-      onDragStart={(e) => handleDragStart(e , { title, id, column })}
+      onDragStart={(e) => handleDragStart(e, { title, id, column })}
       className="cursor-grab  border rounded-md  bg-red-600  p-3 active:cursor-grabbing">
-          <p className="text-sm text-white">{title}</p>
-          <Ellipsis></Ellipsis>
+      <p className="text-sm text-white">{title}</p>
+      <Ellipsis></Ellipsis>
     </motion.div>
   );
 };
@@ -201,7 +198,7 @@ const BurnBarrel: React.FC<{
           ? "border-red-800 bg-red-800/20 text-red-500"
           : "border-neutral-500 bg-neutral-500/20 text-neutral-500"
       }`}>
-       <FiTrash />
+      <FiTrash />
     </div>
   );
 };
@@ -264,13 +261,27 @@ const AddCard: React.FC<{
       )}
     </>
   );
-    };
+};
 
-function Ellipsis () {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-ellipsis"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-        )
-    }
+function Ellipsis() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      className="lucide lucide-ellipsis">
+      <circle cx="12" cy="12" r="1" />
+      <circle cx="19" cy="12" r="1" />
+      <circle cx="5" cy="12" r="1" />
+    </svg>
+  );
+}
 /*
 title string id num column, 
 */
