@@ -48,8 +48,6 @@ model contact_request {
   column      String
 }
 
-
-
 model task {
   id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   created_at   DateTime @default(now()) @db.Timestamptz(6)
@@ -57,7 +55,5 @@ model task {
   title String
   column String
 }
-
-
 
 

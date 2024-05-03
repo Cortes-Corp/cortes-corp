@@ -2,6 +2,7 @@
 import Image from "next/image";
 import ListingCard1 from "@/app/components/ui/ListingCard1";
 import { useRef } from "react";
+
 const houses = [
   {
     src: "https://www.chicagomag.com/wp-content/uploads/2022/08/C202209-312-Bauer-Mansion-exterior.jpg",
@@ -52,21 +53,20 @@ const houses = [
     address: "76 Midwood Drive,\bBridgeport, New York 10987",
   },
 ];
+
 export default function FeaturedHouses() {
-   // Ref to hold the container
    const gridContainerRef = useRef<HTMLDivElement>(null);
 
-   // Function to scroll right
    const scrollRight = () => {
      if (gridContainerRef.current) {
-       gridContainerRef.current.scrollBy({ left: 320, behavior: 'smooth' }); // Change 300 to desired scroll amount
+       gridContainerRef.current.scrollBy({ left: 350, behavior: 'smooth' }); // Change 300 to desired scroll amount
      }
    };
  
    // Function to scroll left
    const scrollLeft = () => {
      if (gridContainerRef.current) {
-       gridContainerRef.current.scrollBy({ left: -320, behavior: 'smooth' }); // Change 300 to desired scroll amount
+       gridContainerRef.current.scrollBy({ left: -350, behavior: 'smooth' }); // Change 300 to desired scroll amount
      }
    };
  
