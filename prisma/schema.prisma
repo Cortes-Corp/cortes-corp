@@ -44,6 +44,8 @@ model contact_request {
   subject      String
   message      String
   name         String
+  title       String
+  column      String
 }
 
 model task {

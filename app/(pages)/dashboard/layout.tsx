@@ -1,4 +1,5 @@
 import Sidebar from "../../components/Sidebar";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import {
   PieChart,
   Briefcase,
@@ -6,9 +7,9 @@ import {
   Settings2,
   Fingerprint,
   Phone,
-  Clipboard
+  Clipboard,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
+
 export default function DashboardLayout({
   children,
 }: {
@@ -22,17 +23,17 @@ export default function DashboardLayout({
   );
 }
 
-const sidebarItems = [
+let sidebarItems = [
   // {
   //   title: "analytics",
   //   link: "analytics",
   //   icon: <PieChart></PieChart>},
   {
     title: "tasks",
-link: "/tasks",
+    link: "/tasks",
     icon: <Clipboard />,
   },
- 
+
   {
     title: "Edit Website",
     link: "edit-website",
@@ -49,3 +50,14 @@ link: "/tasks",
     icon: <Database></Database>,
   },
 ];
+const getPerms = async () => {
+  const { getPermissions } = getKindeServerSession();
+  const permissions = await getPermissions();
+  if (!permissions?.permissions.includes("is:admin")) {
+    sidebarItems = sidebarItems.filter((item) => {
+      return item.title === "tasks";
+    });
+  }
+  console.log(sidebarItems)
+};
+getPerms();

@@ -3,7 +3,6 @@ import { prisma } from "@/app/db/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 const { getUser } = getKindeServerSession();
 
-
 export const createCard = async (text: string, column: string) => {
   const user = await getUser();
   if (!user) return;
@@ -33,10 +32,41 @@ export const GetCards = async () => {
         user_id: user?.id,
       },
     });
-    console.log(cards)
+    console.log(cards);
     return cards;
   } catch (error) {
-    console.error("ERROR:", error)
-    return null
+    console.error("ERROR:", error);
+    return null;
+  }
+};
+
+export const updateCard = async (id: string, column: string) => {
+  try {
+    const updatedCard = await prisma.task.update({
+      where: {
+        id,
+      },
+      data: {
+        column,
+      },
+    });
+    return updatedCard;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+export const deleteCard = async (id: string) => {
+  try {
+    const deletedCard = await prisma.task.delete({
+      where: {
+        id,
+      },
+    });
+    return deletedCard;
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 };

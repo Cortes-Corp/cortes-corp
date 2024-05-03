@@ -1,7 +1,11 @@
 import { HoverEffect } from "@/app/components/ui/card-hover-effect";
 import { Cog, BookUser, UsersRound } from "lucide-react";
 import HamburgerButton from "../edit-website/HamburgerButton";
-export default function Authentication() {
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+export default async function Authentication() {
+  const { getPermissions } = getKindeServerSession();
+  const permissions = await getPermissions();
+  if (!permissions?.permissions?.includes("is:admin")) return;
   return (
     <div>
       <div className="flex p-5  gap-3 items-center">
