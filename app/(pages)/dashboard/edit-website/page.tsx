@@ -2,6 +2,7 @@ import HamburgerButton from "./HamburgerButton";
 import AgentCards from "./AgentCards";
 import AddAgentForm from "./AddAgentForm";
 import { Menu } from "lucide-react";
+import AddListingForm from "./AddListingForm";
 export default function Agents() {
   return (
     <div className="overflow-y-scroll">
@@ -29,13 +30,12 @@ export default function Agents() {
         <div className="w-full flex flex-col items-center justify-center">
           <div className="flex gap-5   items-center mt-10">
             <h2 className="text-xl font-medium">Featured Listings</h2>
-            <button className=" rounded-md bg-red-600 text-white p-2 px-3  font-medium text-sm hover:bg-red-700 transition-all duration-300">
-              Add a new Listing
-            </button>
+            <AddListingForm />
           </div>
 
           <p className="text-slate-500 text-sm mt-1">
             Listings that will show for clients on the website
+
           </p>
         </div>
       </div>
