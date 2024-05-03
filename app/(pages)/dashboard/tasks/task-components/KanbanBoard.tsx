@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FiPlus, FiTrash } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { GetCards, createCard } from "../taskActions";
+import { GetCards, createCard, deleteCard, updateCard } from "../taskActions";
 import { task as Task } from "@prisma/client";
 import { useEffect } from "react";
 type Card = Task;
@@ -44,13 +44,13 @@ const Board = () => {
       if (!res) {
         console.log("Error");
         return;
-      };
+      }
       console.log(res);
       setCards(res);
     };
-    fetchCards()
+    fetchCards();
   }, []);
-  if (!cards.length) return;
+  
 
   return (
     <div className="flex h-full w-full gap-3 overflow-scroll p-12">
@@ -93,7 +93,7 @@ const Column: React.FC<ColumnProps> = ({
     e.dataTransfer.setData("cardId", card.id);
   };
 
-  const handleDragEnd = (e: any) => {
+  const handleDragEnd = async (e: any) => {
     const cardId = e.dataTransfer.getData("cardId");
 
     setActive(false);
@@ -114,7 +114,8 @@ const Column: React.FC<ColumnProps> = ({
     } else {
       copy.splice(insertAtIndex, 0, cardToTransfer);
     }
-
+    const res = await updateCard(cardId, column);
+    console.log(res);
     setCards(copy);
   };
 
@@ -192,11 +193,11 @@ const BurnBarrel: React.FC<{
     setActive(false);
   };
 
-  const handleDragEnd = (e: React.DragEvent) => {
+  const handleDragEnd = async (e: React.DragEvent) => {
     const cardId = e.dataTransfer.getData("cardId");
 
     setCards((prevCards) => prevCards.filter((card) => card.id !== cardId));
-
+    const res = await deleteCard(cardId);
     setActive(false);
   };
 
@@ -293,27 +294,3 @@ function Ellipsis() {
 /*
 title string id num column, 
 */
-const DEFAULT_CARDS: Card[] = [
-  { title: "Look into render bug in dashboard", id: "1", column: "backlog" },
-  { title: "SOX compliance checklist", id: "2", column: "backlog" },
-  { title: "[SPIKE] Migrate to Azure", id: "3", column: "backlog" },
-  { title: "Document Notifications service", id: "4", column: "backlog" },
-  {
-    title: "Research DB options for new microservice",
-    id: "5",
-    column: "todo",
-  },
-  { title: "Postmortem for outage", id: "6", column: "todo" },
-  { title: "Sync with product on Q3 roadmap", id: "7", column: "todo" },
-  {
-    title: "Refactor context providers to use Zustand",
-    id: "8",
-    column: "todo",
-  },
-  { title: "Add logging to daily CRON", id: "9", column: "doing" },
-  {
-    title: "Set up DD dashboards for Lambda listener",
-    id: "10",
-    column: "done",
-  },
-];
