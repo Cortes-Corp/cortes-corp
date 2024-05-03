@@ -1,16 +1,16 @@
 "use client";
 import Image from "next/image";
 import { FormEvent } from "react";
+import { submitRequest } from "./contactActions";
 import { toast } from "sonner";
 import { Button } from "@/app/components/ui/button";
 export default function Contact() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-
-
+    const res = await submitRequest(data)
+    console.log(res);
     e.target.reset();
-
   };
   return (
     <section className="bg-white flex justify-around w-[90%] m-auto   border-t-[0.5rem] border-t-red-500  dark:bg-gray-900">
@@ -22,7 +22,7 @@ export default function Contact() {
           Get in touch with one of our agents.
         </p>
         <form onSubmit={handleSubmit} className="space-y-8">
-        <div>
+          <div>
             <label
               htmlFor="name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -32,7 +32,7 @@ export default function Contact() {
               type="text"
               id="email"
               name="name"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600 dark:shadow-sm-light"
+              className="rounded-md shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600 dark:shadow-sm-light"
               placeholder="John Doe"
               required
             />
@@ -47,7 +47,7 @@ export default function Contact() {
               type="email"
               id="email"
               name="email"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600 dark:shadow-sm-light"
+              className="rounded-md shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600 dark:shadow-sm-light"
               placeholder="name@cortescorp.com"
               required
             />
@@ -62,7 +62,7 @@ export default function Contact() {
               type="tel"
               name="phone_number"
               id="phoneNumber"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600 dark:shadow-sm-light"
+              className="rounded-md shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600 dark:shadow-sm-light"
               placeholder="123-456-7890"
               required
             />
@@ -77,7 +77,7 @@ export default function Contact() {
               type="text"
               id="subject"
               name="subject"
-              className="block p-3 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600 dark:shadow-sm-light"
+              className="rounded-md block p-3 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600 dark:shadow-sm-light"
               placeholder="Let us know how we can help you"
               required
             />
@@ -92,7 +92,7 @@ export default function Contact() {
               id="message"
               rows={6}
               name="message"
-              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 shadow-sm border border-gray-300 focus:ring-red-600 focus:border-red-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600"
+              className=" rounded-md block p-2.5 w-full text-sm text-gray-900 bg-gray-50 shadow-sm border border-gray-300 focus:ring-red-600 focus:border-red-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-600 dark:focus:border-red-600"
               placeholder="Leave a message"></textarea>
           </div>
           <div className="w-full flex items-center justify-center">
@@ -123,7 +123,11 @@ export default function Contact() {
         </form>
       </div>
       <div className="relative my-auto rounded-full overflow-hidden w-[35rem] h-[35rem]">
-        <Image layout='fill' objectFit="cover"  src='/agent-photo.jpg'></Image>
+        <Image
+          alt="agent photo"
+          layout="fill"
+          objectFit="cover"
+          src="/agent-photo.jpg"></Image>
       </div>
     </section>
   );

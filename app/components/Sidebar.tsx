@@ -24,7 +24,7 @@ export default function Sidebar({ items }: any) {
             return (
               <Link href={`/dashboard/${item.link}`}>
                 <li
-                  className={`flex transition-all duration-700  gap-2 items-center ${
+                  className={`flex transition-all duration-300  gap-2 items-center ${
                     includes
                       ? "text-white bg-red-700 p-2 rounded-md"
                       : "text-slate-200"
