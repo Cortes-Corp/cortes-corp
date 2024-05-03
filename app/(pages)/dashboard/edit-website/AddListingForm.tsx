@@ -10,9 +10,11 @@ import {
 import { ChangeEvent, useRef } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { useAgents } from "@/app/state/useAgents";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import BasicCarousel from "@/app/components/ui/basic-carousel";
+import { File } from "buffer";
 
-interface FormData {
+export interface ListingFormData {
   address: string;
   price: string;
   beds: string;
@@ -21,12 +23,12 @@ interface FormData {
   imgs: Array<File> | null;
 }
 
-interface ImagePreview {
+export interface ImagePreview {
   name: string;
   url: string;
 }
 export default function AddListingForm() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<ListingFormData>({
     address: "",
     price: "",
     beds: "",
@@ -54,20 +56,35 @@ export default function AddListingForm() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    setIsLoading(true);
-    try {
-      const data = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        data.append(key, value);
-      });
+    // setIsLoading(true);
+    // try {
+    //   const data = new FormData();
+    //   Object.entries(formData).forEach(([key, value]) => {
+    //     data.append(key, value);
+    //   });
 
-      const res = await fetch("/api/agent", {
-        method: "POST",
-        body: data,
-      });
-      console.log(res);
-      await refetchAgents();
-      setFormData({
+    //   const res = await fetch("/api/agent", {
+    //     method: "POST",
+    //     body: data,
+    //   });
+    //   console.log(res);
+    //   await refetchAgents();
+    //   setFormData({
+    //     address: "",
+    //     price: "",
+    //     beds: "",
+    //     footage: "",
+    //     baths: "",
+    //     imgs: null,
+    //   });
+    //   setIsLoading(false);
+    // } catch (err) {
+    //   console.error(err);
+    //   setIsLoading(false);
+    // }
+  };
+  const resetForm = useCallback(() => {
+    setFormData({
         address: "",
         price: "",
         beds: "",
@@ -75,43 +92,51 @@ export default function AddListingForm() {
         baths: "",
         imgs: null,
       });
-      setIsLoading(false);
-    } catch (err) {
-      console.error(err);
-      setIsLoading(false);
-    }
-  };
+    setPreviews([]);
+    setIsValidated(false);
+  }, []);
+  
   useEffect(() => {
     if (formRef.current && formRef.current.checkValidity()) {
       setIsValidated((isValidated) => !isValidated);
     }
   }, [formData]);
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = useCallback((event : any ) => { // Use useCallback to memoize the function
     const files = event.target.files;
     if (files) {
-      const newPreviews: ImagePreview[] = Array.from(files).map((file) => ({
-        name: file.name,
-        url: URL.createObjectURL(file),
+      const newPreviews = Array.from(files).map(file => ({
+        name: (file as File).name,
+        url: URL.createObjectURL(file as Blob | MediaSource),
       }));
       setPreviews([...previews, ...newPreviews]);
+      adjustFormData("imgs", files as any);
     }
-  };
+  }, [previews]); // Dependencies include previews
 
-  const removeImage = (name: string) => {
-    adjustFormData('imgs', (previews.filter(image => image.name !== name)) as any);
-    URL.revokeObjectURL(name); // Cleanup memory
-  };
 
+  const removeImage = (image: ImagePreview) => {
+    const filteredPreviews = previews.filter((preview) => preview !== image);
+    setPreviews(filteredPreviews);
+
+    // Update form data
+    const newImageFiles = filteredPreviews.map(
+      (preview) => new File([preview.url], preview.name)
+    );
+    adjustFormData("imgs", newImageFiles as any);
+
+    // Cleanup memory
+    URL.revokeObjectURL(image.url);
+  };
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    adaptiveHeight: true
+    adaptiveHeight: true,
   };
-  
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -262,18 +287,7 @@ export default function AddListingForm() {
                             required
                           />
                         </label>
-                        {previews.map((image) => (
-                          <div key={image.name} style={{ margin: 10 }}>
-                            <img
-                              src={image.url}
-                              alt={image.name}
-                              style={{ width: 100, height: 100 }}
-                            />
-                            <button onClick={() => removeImage(image.name)}>
-                              Remove
-                            </button>
-                          </div>
-                        ))}
+                       <BasicCarousel  images={previews} />
                       </div>
                     </div>
                   </div>
@@ -289,7 +303,7 @@ export default function AddListingForm() {
             </DialogPrimitive.Close>
           )}
           {!isValidated && (
-            <button className="  rounded-md bg-red-600 text-white p-2 px-3  font-medium text-sm hover:bg-red-700 transition-all duration-300">
+            <button className="  rounded-md bg-red-600 text-white p-2 px-3 w-[85%]  font-medium text-sm hover:bg-red-700 transition-all duration-300">
               Add
             </button>
           )}

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 export type houseCardObj = {
   src: string;
   price: string;
