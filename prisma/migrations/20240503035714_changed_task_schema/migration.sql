@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "task" ALTER COLUMN "user_id" DROP DEFAULT,
+ALTER COLUMN "user_id" SET DATA TYPE TEXT;

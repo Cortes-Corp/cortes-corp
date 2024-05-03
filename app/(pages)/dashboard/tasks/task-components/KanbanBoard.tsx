@@ -2,12 +2,10 @@
 import React, { useState } from "react";
 import { FiPlus, FiTrash } from "react-icons/fi";
 import { motion } from "framer-motion";
-
-interface Card {
-  id: string;
-  title: string;
-  column: string;
-}
+import { GetCards, createCard } from "../taskActions";
+import { task as Task } from "@prisma/client";
+import { useEffect } from "react";
+type Card = Task;
 
 interface ColumnProps {
   title: string;
@@ -38,7 +36,21 @@ export default function KanbanBoard() {
 }
 
 const Board = () => {
-  const [cards, setCards] = useState<Card[]>(DEFAULT_CARDS);
+  const [cards, setCards] = useState<Card[]>([]);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      const res = await GetCards();
+      if (!res) {
+        console.log("Error");
+        return;
+      };
+      console.log(res);
+      setCards(res);
+    };
+    fetchCards()
+  }, []);
+  if (!cards.length) return;
 
   return (
     <div className="flex h-full w-full gap-3 overflow-scroll p-12">
@@ -210,17 +222,13 @@ const AddCard: React.FC<{
   const [text, setText] = useState("");
   const [adding, setAdding] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!text.trim().length) return;
-
-    const newCard = {
-      column,
-      title: text.trim(),
-      id: Math.random().toString(),
-    };
-
+    const newCard = await createCard(text.trim(), column);
+    console.log(newCard);
+    if (!newCard) throw new Error("card not created");
     setCards((prevCards) => [...prevCards, newCard]);
 
     setAdding(false);
@@ -272,9 +280,9 @@ function Ellipsis() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="lucide lucide-ellipsis">
       <circle cx="12" cy="12" r="1" />
       <circle cx="19" cy="12" r="1" />
