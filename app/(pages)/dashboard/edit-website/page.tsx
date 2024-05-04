@@ -3,7 +3,14 @@ import AgentCards from "./AgentCards";
 import AddAgentForm from "./AddAgentForm";
 import { Menu } from "lucide-react";
 import AddListingForm from "./AddListingForm";
-export default function Agents() {
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+
+export default async function Agents() {
+  const { getPermissions } = getKindeServerSession();
+  const permissions = await getPermissions();
+  console.log(permissions)
+  if (!permissions?.permissions?.includes("is:admin")) return;
+
   return (
     <div className="overflow-y-scroll">
       <div className="w-full p-5">
