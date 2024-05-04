@@ -79,7 +79,10 @@ export default function AddListingForm() {
         data.append(key, value);
       });
 
-      const res = await createListing(data);
+      const res = await fetch("/api/listing", {
+        method: "POST",
+        body: data,
+      });
       console.log(res);
       setFormData({
         address: "",
