@@ -117,8 +117,8 @@ export default function Navbar() {
                 if (
                   link.name === "Messages" &&
                   (!isAuthenticated ||
-                    !hasMessages ||
-                    !permissions.permissions.includes("is:agent"))
+                    (!hasMessages &&
+                    !permissions.permissions.includes("is:agent")))
                 )
                   return;
 
