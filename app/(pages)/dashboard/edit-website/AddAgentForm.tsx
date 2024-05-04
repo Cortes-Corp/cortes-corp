@@ -41,6 +41,7 @@ export default function addAgentForm() {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value = name === "img" ? event.target.files![0] : event.target.value;
+    console.log(value)
     setFormData((formData) => ({
       ...formData,
       [name]: value,
