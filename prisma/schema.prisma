@@ -57,3 +57,13 @@ model task {
 }
 
 
+model Listing {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  address   String
+  price     String
+  beds      String
+  footage   String
+  baths     String
+  imgs      String[] // Storing image URLs or references in an array
+}

@@ -13,6 +13,7 @@ import { useAgents } from "@/app/state/useAgents";
 import { useState, useEffect, useCallback } from "react";
 import BasicCarousel from "@/app/components/ui/basic-carousel";
 import { File } from "buffer";
+import createListing from "./actions/actions";
 
 export interface ListingFormData {
   address: string;
@@ -34,7 +35,7 @@ export default function AddListingForm() {
     beds: "",
     footage: "",
     baths: "",
-    imgs: null,
+    imgs: [],
   });
   const [previews, setPreviews] = useState<Array<ImagePreview>>([]);
   const [isValidated, setIsValidated] = useState(false);
@@ -46,42 +47,56 @@ export default function AddListingForm() {
     name: string,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const value =
-      name === "imgs" ? Array.from(event.target.files!) : event.target.value;
+    let value : any;
+    if (name === "imgs" && event.target.files ) {
+        console.log(event.target.files)
+      value = Array.from(event.target.files!) || null;
+      console.log(value)
+
+      setFormData((formData) => {
+        return {
+          ...formData,
+          imgs: [...formData.imgs as any, ...value ],
+        };
+      })
+    } else {
+      value = event.target.value.toString();
+    }
+    
     setFormData((formData) => ({
       ...formData,
       [name]: value,
     }));
+    console.log(formData)
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // setIsLoading(true);
-    // try {
-    //   const data = new FormData();
-    //   Object.entries(formData).forEach(([key, value]) => {
-    //     data.append(key, value);
-    //   });
+    setIsLoading(true);
+    try {
+      const data = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        data.append(key, value);
+      });
 
-    //   const res = await fetch("/api/agent", {
-    //     method: "POST",
-    //     body: data,
-    //   });
-    //   console.log(res);
-    //   await refetchAgents();
-    //   setFormData({
-    //     address: "",
-    //     price: "",
-    //     beds: "",
-    //     footage: "",
-    //     baths: "",
-    //     imgs: null,
-    //   });
-    //   setIsLoading(false);
-    // } catch (err) {
-    //   console.error(err);
-    //   setIsLoading(false);
-    // }
+      const res = await fetch("/api/listing", {
+        method: "POST",
+        body: data,
+      });
+      console.log(res);
+      setFormData({
+        address: "",
+        price: "",
+        beds: "",
+        footage: "",
+        baths: "",
+        imgs: [],
+      });
+      setIsLoading(false);
+    } catch (err) {
+      console.error(err);
+      setIsLoading(false);
+    }
   };
   const resetForm = useCallback(() => {
     setFormData({
@@ -110,7 +125,16 @@ export default function AddListingForm() {
         url: URL.createObjectURL(file as Blob | MediaSource),
       }));
       setPreviews([...previews, ...newPreviews]);
-      adjustFormData("imgs", files as any);
+      console.log(formData)
+      setFormData((formData) => {
+        return {
+          ...formData,
+          imgs: [...formData.imgs as any, event.target.files![0]],
+        };
+        
+
+        
+      })
     }
   }, [previews]); // Dependencies include previews
 
@@ -282,7 +306,6 @@ export default function AddListingForm() {
                             id="images"
                             name="files"
                             type="file"
-                            multiple
                             className="flex items-center justify-center"
                             required
                           />

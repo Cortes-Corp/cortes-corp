@@ -1,10 +1,9 @@
-'use server'
 import { prisma } from "@/app/db/db";
 import supabase from "@/app/db/supabaseInstace";
 import { NextRequest } from "next/server";
 import { File } from "buffer";
-export default async function createListing(formData: FormData) {
-    const data = formData;
+export default async function createListing(req: NextRequest) {
+    const data =  await req.formData();
 
     interface FormDataObject {
         address: string;
@@ -23,9 +22,9 @@ export default async function createListing(formData: FormData) {
         address: data.get("address") as string,
     };
 
-    const imgs = data.getAll("imgs");
+    const imgs = data.getAll("imgs") as any;
     let img_arr: string[] = []
-    for (const file  of imgs as any) {
+    for (const file  of imgs) {
             const bytes = await file.arrayBuffer();
             const buffer = Buffer.from(bytes);
             const mimeType = file.type;
