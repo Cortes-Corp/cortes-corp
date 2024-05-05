@@ -21,7 +21,7 @@ export default async function Authentication() {
     </div>
   );
 }
-export const projects = [
+ const projects = [
   {
     title: "Users",
     description: <UsersRound size={60}></UsersRound>,
