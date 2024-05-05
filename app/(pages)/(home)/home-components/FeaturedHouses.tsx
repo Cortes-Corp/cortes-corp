@@ -3,7 +3,7 @@ import Image from "next/image";
 import ListingCard1 from "@/app/components/ui/ListingCard1";
 import { useRef , useEffect, useState} from "react";
 import { getHouses } from "../../dashboard/edit-website/actions/actions";
-
+import { Listing } from "@prisma/client";
 export default function FeaturedHouses() {
   const gridContainerRef = useRef<HTMLDivElement>(null);
   const [houses, setHouses] = useState<Listing[] | null>(null);
@@ -15,7 +15,7 @@ export default function FeaturedHouses() {
     fetchHouses();
   }, []);
   if (houses === null) {
-    return <div>None so far</div>;
+    return <div className="w-full flex justify-center">None so far</div>;
   }
 
    const scrollRight = () => {
