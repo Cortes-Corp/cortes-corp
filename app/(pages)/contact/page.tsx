@@ -14,7 +14,7 @@ export default function Contact() {
   };
   return (
     <section className="bg-white flex justify-around w-[90%] m-auto   border-t-[0.5rem] border-t-red-500  dark:bg-gray-900">
-      <div className="pt-8  w-[50%] scale-[90%]    px-4  ">
+      <div className="pt-8 w-full  lg:w-[50%] scale-[90%]    px-4  ">
         <h2 className="mb-0 text-4xl tracking-tight font-extrabold text-center text-red-600 dark:text-white">
           Contact Us
         </h2>
@@ -122,7 +122,7 @@ export default function Contact() {
           </div>
         </form>
       </div>
-      <div className="relative my-auto rounded-full overflow-hidden w-[35rem] h-[35rem]">
+      <div className=" hidden relative my-auto rounded-full overflow-hidden w-[30rem] h-[30rem] lg:block">
         <Image
           alt="agent photo"
           layout="fill"

@@ -6,7 +6,7 @@ import { GetCards, createCard, deleteCard, updateCard } from "../taskActions";
 import { task as Task } from "@prisma/client";
 import { useEffect } from "react";
 type Card = Task;
-
+import { useTasks } from "@/app/state/useTasks";
 interface ColumnProps {
   title: string;
   headingColor: string;
@@ -19,7 +19,7 @@ interface CardProps {
   title: string;
   id: string;
   column: string;
-  handleDragStart: (e: any, card: Card) => void;
+  handleDragStart: (e: any, card: any) => void;
 }
 
 interface DropIndicatorProps {
@@ -29,7 +29,7 @@ interface DropIndicatorProps {
 
 export default function KanbanBoard() {
   return (
-    <div className="h-screen w-full bg-white text-neutral-50">
+    <div className=" w-full bg-white text-neutral-50">
       <Board />
     </div>
   );
@@ -37,7 +37,21 @@ export default function KanbanBoard() {
 
 const Board = () => {
   const [cards, setCards] = useState<Card[]>([]);
+  const { addThis } = useTasks();
+  const addCard = async(text: string) => {
 
+      if (!text.trim().length) return;
+      const newCard = await createCard(text.trim(), "todo");
+      console.log(newCard);
+      if (!newCard) throw new Error("card not created");
+      setCards((prevCards: any) => [...prevCards, newCard]);
+
+  };
+  useEffect(() => {
+    if (addThis !== "") {
+      addCard(addThis);
+    }
+  }, [addThis]);
   useEffect(() => {
     const fetchCards = async () => {
       const res = await GetCards();
@@ -50,10 +64,9 @@ const Board = () => {
     };
     fetchCards();
   }, []);
-  
 
   return (
-    <div className="flex h-full w-full gap-3 overflow-scroll p-12">
+    <div className="flex flex-wrap h-full w-full gap-3  p-12">
       <Column
         title="TODO"
         column="todo"
@@ -89,7 +102,7 @@ const Column: React.FC<ColumnProps> = ({
 }) => {
   const [active, setActive] = useState(false);
 
-  const handleDragStart = (e: any, card: Card) => {
+  const handleDragStart = (e: any, card: any) => {
     e.dataTransfer.setData("cardId", card.id);
   };
 
@@ -218,7 +231,7 @@ const BurnBarrel: React.FC<{
 
 const AddCard: React.FC<{
   column: string;
-  setCards: React.Dispatch<React.SetStateAction<Card[]>>;
+  setCards: any;
 }> = ({ column, setCards }) => {
   const [text, setText] = useState("");
   const [adding, setAdding] = useState(false);
@@ -230,7 +243,7 @@ const AddCard: React.FC<{
     const newCard = await createCard(text.trim(), column);
     console.log(newCard);
     if (!newCard) throw new Error("card not created");
-    setCards((prevCards) => [...prevCards, newCard]);
+    setCards((prevCards: any) => [...prevCards, newCard]);
 
     setAdding(false);
   };

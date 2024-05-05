@@ -24,11 +24,12 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Agents", href: "/agents" },
-    { name: "About", href: "/about" },
+    // { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
     { name: "Messages", href: "/chat" },
-    { name: "Dashboard", href: "/dashboard/tasks" }
+    { name: "Dashboard", href: "/dashboard/tasks" },
+    
   ];
   const handleProfileClick = () => { };
 

@@ -13,7 +13,7 @@ import { useAgents } from "@/app/state/useAgents";
 import { useState, useEffect, useCallback } from "react";
 import BasicCarousel from "@/app/components/ui/basic-carousel";
 import { File } from "buffer";
-import createListing from "./actions/actions";
+
 
 export interface ListingFormData {
   address: string;
@@ -21,7 +21,7 @@ export interface ListingFormData {
   beds: string;
   footage: string;
   baths: string;
-  imgs: Array<File> | null;
+  img: File | null;
 }
 
 export interface ImagePreview {
@@ -35,7 +35,7 @@ export default function AddListingForm() {
     beds: "",
     footage: "",
     baths: "",
-    imgs: [],
+    img: null,
   });
   const [previews, setPreviews] = useState<Array<ImagePreview>>([]);
   const [isValidated, setIsValidated] = useState(false);
@@ -47,29 +47,13 @@ export default function AddListingForm() {
     name: string,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    let value : any;
-    if (name === "imgs" && event.target.files ) {
-        console.log(event.target.files)
-      value = Array.from(event.target.files!) || null;
-      console.log(value)
-
-      setFormData((formData) => {
-        return {
-          ...formData,
-          imgs: [...formData.imgs as any, ...value ],
-        };
-      })
-    } else {
-      value = event.target.value.toString();
-    }
-    
+    const value = name === "img" ? event.target.files![0] : event.target.value;
+    console.log(value)
     setFormData((formData) => ({
       ...formData,
       [name]: value,
     }));
-    console.log(formData)
   };
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
@@ -82,6 +66,7 @@ export default function AddListingForm() {
       const res = await fetch("/api/listing", {
         method: "POST",
         body: data,
+        cache: "no-store"
       });
       console.log(res);
       setFormData({
@@ -90,7 +75,7 @@ export default function AddListingForm() {
         beds: "",
         footage: "",
         baths: "",
-        imgs: [],
+        img: null,
       });
       setIsLoading(false);
     } catch (err) {
@@ -105,7 +90,7 @@ export default function AddListingForm() {
         beds: "",
         footage: "",
         baths: "",
-        imgs: null,
+        img: null,
       });
     setPreviews([]);
     setIsValidated(false);
@@ -117,26 +102,26 @@ export default function AddListingForm() {
     }
   }, [formData]);
 
-  const handleFileChange = useCallback((event : any ) => { // Use useCallback to memoize the function
-    const files = event.target.files;
-    if (files) {
-      const newPreviews = Array.from(files).map(file => ({
-        name: (file as File).name,
-        url: URL.createObjectURL(file as Blob | MediaSource),
-      }));
-      setPreviews([...previews, ...newPreviews]);
-      console.log(formData)
-      setFormData((formData) => {
-        return {
-          ...formData,
-          imgs: [...formData.imgs as any, event.target.files![0]],
-        };
+  // const handleFileChange = useCallback((event : any ) => { // Use useCallback to memoize the function
+  //   const files = event.target.files;
+  //   if (files) {
+  //     const newPreviews = Array.from(files).map(file => ({
+  //       name: (file as File).name,
+  //       url: URL.createObjectURL(file as Blob | MediaSource),
+  //     }));
+  //     setPreviews([...previews, ...newPreviews]);
+  //     console.log(formData)
+  //     setFormData((formData) => {
+  //       return {
+  //         ...formData,
+  //         imgs: [...formData.imgs as any, event.target.files![0]],
+  //       };
         
 
         
-      })
-    }
-  }, [previews]); // Dependencies include previews
+  //     })
+  //   }
+  // }, [previews]); // Dependencies include previews
 
 
   const removeImage = (image: ImagePreview) => {
@@ -302,7 +287,7 @@ export default function AddListingForm() {
                           className=" cursor-pointer rounded-md bg-white font-semibold text-red-600 focus-within:outline-none "
                         >
                           <input
-                            onChange={(e) => handleFileChange(e)}
+                            onChange={(e) => adjustFormData("img", e)}
                             id="images"
                             name="files"
                             type="file"
@@ -310,7 +295,7 @@ export default function AddListingForm() {
                             required
                           />
                         </label>
-                       <BasicCarousel  images={previews} />
+                  
                       </div>
                     </div>
                   </div>

@@ -27,10 +27,9 @@ export default function Messages({ chatRoom }: Props) {
   const [fetchMessages, setFetchMessages] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { refetchRoom, setRefetchRoom } = useRooms();
-  
+
   useEffect(() => {
     const getRoomMessages = async () => {
-    
       const res = await getMessages(chatRoom);
       if (!Array.isArray(res)) {
         console.error("unable to get messages");
@@ -38,16 +37,15 @@ export default function Messages({ chatRoom }: Props) {
       }
       const rooms = await getRooms();
       setMessages(res);
-    
     };
     getRoomMessages();
   }, [fetchMessages]);
   useEffect(() => {
     chatRef.current?.scrollTo({
       top: chatRef.current.scrollHeight,
-      
     });
   }, [messages]);
+
 
   useEffect(() => {
     supabase
@@ -61,13 +59,15 @@ export default function Messages({ chatRoom }: Props) {
         },
 
         (payload) => {
+          console.log("")
           setFetchMessages((fetchMessages) => !fetchMessages);
-          setRefetchRoom(!refetchRoom)
+          setRefetchRoom(!refetchRoom);
         }
       )
       .subscribe();
   }, []);
- 
+
+
   return (
     <div ref={chatRef} className="w-full overflow-y-scroll h-[80vh]">
       {messages &&

@@ -4,7 +4,7 @@ import AddAgentForm from "./AddAgentForm";
 import { Menu } from "lucide-react";
 import AddListingForm from "./AddListingForm";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-
+import Listings from "./Listings";
 export default async function Agents() {
   const { getPermissions } = getKindeServerSession();
   const permissions = await getPermissions();
@@ -42,10 +42,13 @@ export default async function Agents() {
 
           <p className="text-slate-500 text-sm mt-1">
             Listings that will show for clients on the website
-
           </p>
+          
         </div>
       </div>
+      <div>
+        <Listings></Listings>
+          </div>
     </div>
   );
 }

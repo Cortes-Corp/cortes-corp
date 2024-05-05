@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div className="pt-12">
             <footer id="footer" className="relativev z-50 dark:bg-gray-900 pt-24">
-                <div className=" border-t border-b border-gray-200 dark:border-gray-700 py-16">
+                {/* <div className=" border-t border-b border-gray-200 dark:border-gray-700 py-16">
                     <div className="mx-auto container px-4 xl:px-12 2xl:px-4">
                         <div className="lg:flex">
                             <div className="w-full lg:w-1/2 mb-16 lg:mb-0 flex">
@@ -115,7 +115,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="py-16 flex flex-col justify-center items-center">
                     
                     <p className="mt-6 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">2024 CortesCorp. All Rights Reserved.</p>

@@ -10,7 +10,7 @@ import FeaturedHouses from "./home-components/FeaturedHouses";
 import HomeContent from "./home-components/HomeContent";
 import Testimonials from "@/app/components/Testimonial";
 import Contact from "../contact/page";
-import Contact2 from "@/app/components/Contact";
+
 import Footer from "@/app/components/Footer";
 import Services from "@/app/components/Services";
 import Regions from "@/app/components/Regions";
@@ -72,7 +72,7 @@ export default function Home() {
     <div className="  w-full ">
       <div className=" flex-col justify-center   relative   z-10  ">
         <ListingCarousel />
-        <ListingSearchBar />
+        {/* <ListingSearchBar /> */}
       </div>
       <Regions />
       <FeaturedHouses></FeaturedHouses>
@@ -84,7 +84,6 @@ export default function Home() {
       <div className="mt-20">
         <Contact />
       </div>
-
       <Footer />
     </div>
   );

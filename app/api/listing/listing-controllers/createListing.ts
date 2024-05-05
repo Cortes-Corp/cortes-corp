@@ -1,19 +1,21 @@
 import { prisma } from "@/app/db/db";
 import supabase from "@/app/db/supabaseInstace";
 import { NextRequest } from "next/server";
-import { File } from "buffer";
-export default async function createListing(req: NextRequest) {
-    const data =  await req.formData();
 
+export default async function createListing(req: NextRequest) {
+    const data = await req.formData();
+    console.log("data:", data)
+    // Define the expected structure
     interface FormDataObject {
         address: string;
         price: string;
         beds: string;
         footage: string;
         baths: string;
-        imgs?: File[];
+        img?: string;
     }
 
+    // Populate the listing object with form data values
     const listing: FormDataObject = {
         price: data.get("price") as string,
         beds: data.get("beds") as string,
@@ -22,51 +24,59 @@ export default async function createListing(req: NextRequest) {
         address: data.get("address") as string,
     };
 
-    const imgs = data.getAll("imgs") as any;
-    let img_arr: string[] = []
-    for (const file  of imgs) {
-            const bytes = await file.arrayBuffer();
-            const buffer = Buffer.from(bytes);
-            const mimeType = file.type;
-            const fileName = file.name;
-
-            const { error } = await supabase.storage
-                .from("listingPhotos")
-                .upload(`${fileName}`, buffer, {
-                    contentType: mimeType,
-                    upsert: true,
-                });
-            if (error) {
-                console.error(error);
-                return new Response("Failed to upload file", {
-                    status: 500,
-                });
-            }
-            const bucketName = "listingPhotos";
-            const filePath = `uploads/${fileName}`;
-            const supabaseUrl = process.env.SUPABASE_URL;
-            const projectID = supabaseUrl?.split(".")[0].split("//")[1];
-            const fileUrl = `https://${projectID}.supabase.co/storage/v1/object/public/${bucketName}/${filePath}`;
-            img_arr.push(fileUrl)
-        
-    };
-
+    // Retrieve and verify the image file
+    const img = data.get("img");
+    if (!(img instanceof File)) {
+        console.error("Invalid image file type:", img);
+        return new Response("Invalid image file type", {
+            status: 400,
+        });
+    }
 
     try {
+        // Convert the image to a buffer
+        const bytes = await img.arrayBuffer();
+        const buffer = Buffer.from(bytes);
+        const mimeType = img.type;
+        const fileName = img.name;
+
+        // Upload to Supabase
+        const { error } = await supabase.storage
+            .from("listingPhotos")
+            .upload(`uploads/${fileName}`, buffer, {
+                contentType: mimeType,
+                upsert: true,
+            });
+
+        // Handle upload error
+        if (error) {
+            console.error("Upload error:", error);
+            return new Response("Failed to upload file", {
+                status: 500,
+            });
+        }
+
+        // Generate the public file URL
+        const bucketName = "listingPhotos";
+        const filePath = `uploads/${fileName}`;
+        const supabaseUrl = process.env.SUPABASE_URL;
+        const projectID = supabaseUrl?.split(".")[0].split("//")[1];
+        const fileUrl = `https://${projectID}.supabase.co/storage/v1/object/public/${bucketName}/${filePath}`;
+
+        // Create the listing in the database
         const newListing = await prisma.listing.create({
             data: {
                 ...listing,
-                imgs: [...img_arr],
+                src: fileUrl,
             },
         });
         return new Response(JSON.stringify(newListing), {
             status: 200,
         });
     } catch (err) {
-        console.error(err);
+        console.error("Database error:", err);
         return new Response(JSON.stringify({ error: err }), {
             status: 500,
         });
     }
-
 }

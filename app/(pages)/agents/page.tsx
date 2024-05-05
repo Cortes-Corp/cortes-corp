@@ -17,10 +17,10 @@ export default function Agents() {
 
   return (
     <div className=" bg-gray-100 h-screen ">
-      <div className="p-5 flex flex-col items-center">
+      <div className=" flex flex-col items-center">
         <h1 className="text-[2rem]">AGENTS</h1>
-        <div></div>
-        <ul className="mt-16 flex  gap-10">
+ 
+        <ul className="mt-16 bg-gray-100 flex-wrap w-screen  items-center justify-center flex  gap-10">
           {agents &&
             agents.map((agent: any, index: any) => {
               return (

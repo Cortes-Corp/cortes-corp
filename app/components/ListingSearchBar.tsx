@@ -10,9 +10,9 @@ export default function ListingSearchBar() {
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
           Search
         </label>
-        <div className="relative ">
+        <div className="relative">
 
-          <button type='submit'  className=" rounded-lg cursor-pointer absolute bg-red-600 px-7 hover:bg-red-700 transition-all duration-300  inset-y-0 end-0 flex items-center  ">
+          <button type='submit'  className=" rounded-lg cursor-pointer absolute bg-red-600 px-7 hover:bg-red-700 transition-all duration-300  inset-y-0  flex items-center  ">
             <svg
               className="w-4 h-4  text-white "
               aria-hidden="true"
@@ -31,7 +31,7 @@ export default function ListingSearchBar() {
           <input
             type="search"
             id="default-search"
-            className="block shadow-md rounded-lg text-[1rem] w-full py-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50    "
+            className=" block shadow-md self-center rounded-lg text-[1rem] w-[]  py-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 md:w-full    "
             placeholder="City, County, or ZIP Code"
             required
           />

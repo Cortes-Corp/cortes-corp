@@ -3,10 +3,11 @@ import { useState, useCallback } from "react";
 export type houseCardObj = {
   src: string;
   price: string;
-  bedrooms: string;
-  bathrooms: string;
+  beds: string;
+  baths: string;
   footage: string;
   address: string;
+
 };
 interface listingCard1Props {
   house: houseCardObj;
@@ -16,7 +17,7 @@ function ListingCard1({ house }: listingCard1Props) {
   const [liked, setLiked] = useState<Boolean>(false)
   return (
     <div className="w-[21.6rem] shadow mb-2 rounded-md  border-[1px]   aspect-[2.5/2.5] cursor-pointer  transition-all duration-200  relative overflow-hidden">
-  <div className="z-9 ">
+  <div className=" ">
     <Image
       alt="house listing"
       layout="fill"
@@ -31,11 +32,11 @@ function ListingCard1({ house }: listingCard1Props) {
       <h1 className="text-[1.3rem]">{house.price}</h1>
       <div className="flex  gap-1 font-thin  text-center">
         <div className="border-r  text-[0.7rem] px-2 border-opacity-10">
-            <p>{house.bedrooms}</p>
+            <p>{house.beds}</p>
             <p>Beds</p>
         </div>
         <div className="border-r text-[0.7rem] px-2 border-opacity-10">
-            <p>{house.bathrooms}</p>
+            <p>{house.baths}</p>
             <p>Baths</p>
         </div>
         <div className="pl-2 text-[0.7rem]">
@@ -51,8 +52,8 @@ function ListingCard1({ house }: listingCard1Props) {
         </div>
     </div>
     
-    <Image onClick={() => setLiked(!liked)}  className='m-auto translate-y-[-13px] ml-[3rem]' alt='heart' src={liked? '/heart-red.png' : '/heart.png'} width={30} height={30}></Image>
-   
+    {/* <Image onClick={() => setLiked(!liked)}  className='m-auto translate-y-[-13px] ml-[3rem]' alt='heart' src={liked? '/heart-red.png' : '/heart.png'} width={30} height={30}></Image>
+    */}
 </div>
 </div>
   );
