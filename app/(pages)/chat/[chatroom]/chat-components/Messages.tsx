@@ -1,4 +1,5 @@
 "use client";
+import { createClient } from "@supabase/supabase-js";
 import { MutableRefObject } from "react";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 import { Avatar, AvatarImage } from "@/app/components/ui/avatar";
@@ -45,7 +46,10 @@ export default function Messages({ chatRoom }: Props) {
       top: chatRef.current.scrollHeight,
     });
   }, [messages]);
-
+  const supabase = createClient(
+    "https://vugicbzgqyjoziwgjvxr.supabase.co",
+    process.env.NEXT_PUBLIC_SUPABASE_KEY!
+  );
 
   useEffect(() => {
     supabase
@@ -59,14 +63,13 @@ export default function Messages({ chatRoom }: Props) {
         },
 
         (payload) => {
-          console.log("")
+          console.log("");
           setFetchMessages((fetchMessages) => !fetchMessages);
           setRefetchRoom(!refetchRoom);
         }
       )
       .subscribe();
   }, []);
-
 
   return (
     <div ref={chatRef} className="w-full overflow-y-scroll h-[80vh]">
